@@ -29,3 +29,18 @@ The *console* object in *Node.js* provides simple methods to write to *stdout, s
 In the context of *Node.js*, *streams* are objects that can either *receive data*, like the *stdout stream*, or objects that can *output data*, like a *network socket or a file*. In the case of the *stdout and stderr streams*, any data sent to them will then be shown in the *console*. One of the great things about *streams* is that they’re easily redirected, in which case you can redirect the *output* of your program to a file, for example.
 
 Save and exit vim by pressing *:wq*. Now your program is ready to run.
+
+## Step 2 — Running the Program
+
+To run this program, use the node command as follows:
+
+```javascript
+node hello.js
+```
+
+The hello.js program will execute and display the following output:
+
+```javascript
+// Output
+Hello World
+```
