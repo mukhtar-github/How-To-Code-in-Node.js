@@ -44,3 +44,73 @@ The hello.js program will execute and display the following output:
 // Output
 Hello World
 ```
+
+The *Node.js* interpreter read the file and executed *console.log("Hello World");* by calling the *log* method of the global *console* object. The string *"Hello World"* was passed as an argument to the *log* function. Although quotation marks are necessary in the code to indicate that the text is a string, they are not printed to the screen.
+
+Having confirmed that the program works, let’s make it more interactive.
+
+## Step 3 — Receiving User Input via Command Line Arguments
+
+Every time you run the *Node.js “Hello, World!”* program, it produces the same *output*. In order to make the program more dynamic, let’s get *input* from the user and display it on the screen.
+
+*Command line* tools often accept various *arguments* that modify their behavior. For example, running *node* with the *--version argument* prints the *installed version* instead of *running the interpreter*. In this step, you will make your code accept *user input* via *command line arguments*.
+
+Create a new file *arguments.js* with vim:
+
+```javascript
+vim arguments.js
+```
+
+Enter the following code:
+
+```javascript
+console.log(process.argv);
+```
+
+The *process object* is a *global Node.js object* that contains *functions and data* all related to the *currently running Node.js process*. The *argv property* is an *array of strings* containing all the *command line arguments* given to a program.
+
+Save and exit vim by pressing *:wq*. Now when you run this program, you provide a command line argument like this:
+
+```javascript
+node arguments.js hello world
+```
+
+The output looks like the following:
+
+```javascript
+[
+  '/usr/bin/node',
+  '/home/mukhtar/Documents/HowTo-Code-in-Node.js/arguments.js',
+  'hello',
+  'world'
+]
+```
+
+The first argument in the *process.argv array* is always the location of the *Node.js binary* that is running the program. The second argument is always the location of the *file being run*. The remaining arguments are what the user entered, in this case: *hello and world*.
+
+We are mostly interested in the arguments that the *user entered*, not the default ones that *Node.js provides*. Open the *arguments.js* file for editing:
+
+```javascript
+vim arguments.js
+```
+
+Change *console.log(process.arg);* to the following:
+
+```javascript
+console.log(process.argv.slice(2));
+```
+
+Because *argv* is an array, you can use JavaScript’s built-in *slice method* that returns a selection of elements. When you provide the *slice function with 2 as its argument*, you get all the elements of *argv* that comes after its second element; that is, the arguments the user entered.
+
+Re-run the program with the *node* command and the same arguments as last time:
+
+```javascript
+node arguments.js hello world
+```
+
+Now, the output looks like this:
+
+```javascript
+// Output
+[ 'hello', 'world' ]
+```
