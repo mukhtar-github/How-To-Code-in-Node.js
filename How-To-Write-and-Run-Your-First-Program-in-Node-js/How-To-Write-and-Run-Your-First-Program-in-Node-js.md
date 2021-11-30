@@ -384,3 +384,11 @@ This time the output will be:
 /home/mukhtar/Documents/HowTo-Code-in-Node.js
 Could not find "NOT_DEFINED" in environment
 ```
+
+Now when you provide a command line argument that’s not an environment variable, you get a clear error message stating so.
+
+## Conclusion
+
+Your first program displayed “Hello World” to the screen, and now you have written a Node.js command line utility that reads user arguments to display environment variables.
+
+If you want to take this further, you can change the behavior of this program even more. For example, you may want to validate the command line arguments before you print. If an argument is undefined, you can return an error, and the user will only get output if all arguments are valid environment variables.
