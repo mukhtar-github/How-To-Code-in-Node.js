@@ -313,3 +313,23 @@ You would see the following output:
 /home/mukhtar
 /home/mukhtar/Documents/HowTo-Code-in-Node.js
 ```
+
+The *forEach* function ensures that every command line argument in the *args* array is printed.
+
+Now you have a way to retrieve the variables the user asks for, but we still need to handle the case where the user enters bad data.
+
+## Step 8 — Handling Undefined Input
+
+To see what happens if you give the program an argument that is not a valid environment variable, run the following:
+
+```javascript
+node echo.js HOME PWD NOT_DEFINED
+```
+
+The output will look similar to the following:
+
+```javascript
+/home/mukhtar
+/home/mukhtar/Documents/HowTo-Code-in-Node.js
+undefined
+```
