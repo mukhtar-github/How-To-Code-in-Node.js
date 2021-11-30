@@ -282,3 +282,34 @@ Now, the output would be:
 The argument *HOME* was saved to the *args* array, which was then used to find its value in the environment via the *process.env* object. At this point you can now access the value of any environment variable on your system. To verify this, try viewing the following variables: *PWD, USER, PATH*. Retrieving single variables is good, but letting the user specify how many variables they want would be better.
 
 ## Step 7 — Viewing Multiple Environment Variables
+
+Currently, the application can only inspect one environment variable at a time. It would be useful if we could accept multiple command line arguments and get their corresponding value in the environment. Use *vim* to edit *echo.js*:
+
+```javascript
+vim echo.js
+```
+
+Edit the file so that it has the following code instead:
+
+```javascript
+const args = process.argv.slice(2);
+
+args.forEach(arg => {
+  console.log(process.env[arg]);
+});
+```
+
+The *forEach* method is a standard JavaScript method on all *array objects*. It accepts a *callback* function that is used as it iterates over every element of the array. You use *forEach* on the *args array*, providing it a *callback* function that prints the current argument’s value in the environment.
+
+Save and exit the file. Now re-run the program with two arguments:
+
+```javascript
+node echo.js HOME PWD
+```
+
+You would see the following output:
+
+```javascript
+/home/mukhtar
+/home/mukhtar/Documents/HowTo-Code-in-Node.js
+```

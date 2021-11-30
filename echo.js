@@ -1,2 +1,5 @@
 const args = process.argv.slice(2);
-console.log(process.env[args[0]]);
+
+args.forEach(arg => {
+  console.log(process.env[arg]);
+});
