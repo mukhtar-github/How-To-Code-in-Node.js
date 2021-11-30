@@ -368,5 +368,19 @@ Here, you have modified the callback function provided to *forEach* to do the fo
 3. If the *envVar* is undefined, then we print a helpful message indicating that it could not be found.
 4. If an environment variable was found, we print its value.
 
-> Note: The console.error function prints a message to the screen via the stderr stream, whereas console.log prints to the screen via the stdout stream. When you run this program via the command line, you won’t notice the difference between the stdout and stderr streams, but it is good practice to print errors via the stderr stream so that they can be easier identified and processed by other programs, which can tell the difference.
+> Note: The *console.error* function prints a message to the screen via the *stderr* stream, whereas *console.log* prints to the screen via the *stdout* stream. When you run this program via the command line, you won’t notice the difference between the *stdout* and *stderr* streams, but it is good practice to print errors via the *stderr* stream so that they can be easier identified and processed by other programs, which can tell the difference.
 
+Now run the following command once more:
+
+```javascript
+node echo.js HOME PWD NOT_DEFINED
+```
+
+This time the output will be:
+
+```javascript
+// Output
+/home/mukhtar
+/home/mukhtar/Documents/HowTo-Code-in-Node.js
+Could not find "NOT_DEFINED" in environment
+```
