@@ -310,6 +310,7 @@ node echo.js HOME PWD
 You would see the following output:
 
 ```javascript
+// Output
 /home/mukhtar
 /home/mukhtar/Documents/HowTo-Code-in-Node.js
 ```
@@ -329,7 +330,43 @@ node echo.js HOME PWD NOT_DEFINED
 The output will look similar to the following:
 
 ```javascript
+// Output
 /home/mukhtar
 /home/mukhtar/Documents/HowTo-Code-in-Node.js
 undefined
 ```
+
+The first two lines print as expected, and the last line only has *undefined*. In JavaScript, an *undefined* value means that a variable or property has not been assigned a value. Because *NOT_DEFINED* is not a valid environment variable, it is shown as *undefined*.
+
+It would be more helpful to a user to see an error message if their command line argument was not found in the environment.
+
+Open echo.js for editing:
+
+```javascript
+vim echo.js
+```
+
+Edit echo.js so that it has the following code:
+
+```javascript
+const args = process.argv.slice(2);
+
+args.forEach(arg => {
+  let envVar = process.env[arg];
+  if (envVar === undefined) {
+    console.error(`Could not find "${arg}" in environment`);
+  } else {
+    console.log(envVar);
+  }
+});
+```
+
+Here, you have modified the callback function provided to *forEach* to do the following things:
+
+1. Get the command line argument’s value in the environment and store it in a variable *envVar*.
+2. Check if the value of *envVar* is *undefined*.
+3. If the *envVar* is undefined, then we print a helpful message indicating that it could not be found.
+4. If an environment variable was found, we print its value.
+
+> Note: The console.error function prints a message to the screen via the stderr stream, whereas console.log prints to the screen via the stdout stream. When you run this program via the command line, you won’t notice the difference between the stdout and stderr streams, but it is good practice to print errors via the stderr stream so that they can be easier identified and processed by other programs, which can tell the difference.
+
