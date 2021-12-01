@@ -221,3 +221,104 @@ Then press the Math.sq key and the REPL will autocomplete the function:
 ```
 
 When there are multiple possibilities for autocompletion, you’re prompted with all the available options. For an example, enter just:
+
+```javascript
+> Math.
+```
+
+And press *TAB* twice. You’re greeted with the possible autocompletions:
+
+```javascript
+> Math.
+Math.__defineGetter__      Math.__defineSetter__      Math.__lookupGetter__      Math.__lookupSetter__      Math.__proto__
+Math.constructor           Math.hasOwnProperty        Math.isPrototypeOf         Math.propertyIsEnumerable  Math.toLocaleString
+Math.toString              Math.valueOf
+
+Math.E                     Math.LN10                  Math.LN2                   Math.LOG10E                Math.LOG2E
+Math.PI                    Math.SQRT1_2               Math.SQRT2                 Math.abs                   Math.acos
+Math.acosh                 Math.asin                  Math.asinh                 Math.atan                  Math.atan2
+Math.atanh                 Math.cbrt                  Math.ceil                  Math.clz32                 Math.cos
+Math.cosh                  Math.exp                   Math.expm1                 Math.floor                 Math.fround
+Math.hypot                 Math.imul                  Math.log                   Math.log10                 Math.log1p
+Math.log2                  Math.max                   Math.min                   Math.pow                   Math.random
+Math.round                 Math.sign                  Math.sin                   Math.sinh                  Math.sqrt
+Math.tan                   Math.tanh                  Math.trunc
+
+> Math.
+```
+
+Depending on the screen size of your shell, the output may be displayed with a different number of rows and columns. This is a list of all the functions and properties that are available in the *Math* module.
+
+Press *CTRL+C* to get to a new line in the prompt without executing what is in the current line.
+
+Knowing the *REPL* shortcuts makes you more efficient when using it. Though, there’s another thing *REPL* provides for increased productivity—The *REPL* commands.
+
+## Step 4 — Using REPL Commands
+
+The REPL has specific keywords to help control its behavior. Each command begins with a dot (.).
+
+### .help
+
+To list all the available commands, use the *.help* command:
+
+```javascript
+> .help
+```
+
+There aren’t many, but they’re useful for getting things done in the *REPL*:
+
+```javascript
+> .help
+.break    Sometimes you get stuck, this gets you out
+.clear    Alias for .break
+.editor   Enter editor mode
+.exit     Exit the repl
+.help     Print this help message
+.load     Load JS from a file into the REPL session
+.save     Save all evaluated commands in this REPL session to a file
+
+Press ^C to abort current expression, ^D to exit the repl
+> 
+```
+
+If ever you forget a command, you can always refer to .help to see what it does.
+
+### .break/.clear
+
+Using *.break* or *.clear*, it’s easy to exit a multi-line expression. For example, begin a *for loop* as follows:
+
+```javascript
+> for (let i = 0; i < 100000000; i++) {
+```
+
+To exit from entering any more lines, instead of entering the next one, use the .break or .clear command to break out:
+
+```javascript
+... .break
+```
+
+You’ll see a new prompt:
+
+```javascript
+>
+```
+
+The *REPL* will move on to a new line without executing any code, similar to pressing *CTRL+C*.
+
+### .save and .load
+
+The *.save* command stores all the code you ran since starting the *REPL*, into a file. The *.load* command runs all the JavaScript code from a file inside the *REPL*.
+
+Quit the session using the *.exit* command or with the *CTRL+D* shortcut. Now start a new *REPL* with *node*. Now only the code you are about to write will be saved.
+
+Create an array with fruits:
+
+```javascript
+> fruits = ['banana', 'apple', 'mango']
+```
+
+In the next line, the REPL will display:
+
+```javascript
+[ 'banana', 'apple', 'mango' ]
+```
