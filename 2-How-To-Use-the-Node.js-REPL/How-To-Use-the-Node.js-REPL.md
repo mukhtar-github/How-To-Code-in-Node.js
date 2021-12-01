@@ -334,3 +334,53 @@ We’re greeted with the confirmation:
 ```javascript
 Session saved to: fruits.js
 ```
+
+The file is saved in the same directory where you opened the *Node.js REPL*. For example, if you opened the *Node.js REPL* in your home directory, then your file will be saved in your home directory.
+
+Exit the session and start a new *REPL* with *node*. At the prompt, load the *fruits.js* file by entering:
+
+```javascript
+> .load fruits.js
+```
+
+This results in:
+
+```javascript
+fruits = ['banana', 'apple', 'mango']
+[ 'banana', 'apple', 'mango' ]
+```
+
+The *.load* command reads each line of code and executes it, as expected of a JavaScript interpreter. You can now use the *fruits* variable as if it was available in the current session all the time.
+
+Type the following command and press ENTER:
+
+```javascript
+> fruits[1]
+```
+
+The *REPL* will output:
+
+```javascript
+'apple'
+```
+
+You can load any JavaScript file with the *.load* command, not only items you saved. Let’s quickly demonstrate by opening your preferred code editor or vim, a command line editor, and create a new file called *peanuts.js*:
+
+```javascript
+vim peanuts.js
+```
+
+Now that the file is open, type the following:
+
+```javascript
+console.log('I love peanuts!');
+```
+
+Save and exit vim by pressing *:wq*. Now
+
+In the same directory where you saved *peanuts.js*, start the *Node.js REPL* with *node*. Load *peanuts.js* in your session:
+
+```javascript
+> .load peanuts.js
+```
+
