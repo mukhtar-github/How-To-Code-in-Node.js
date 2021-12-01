@@ -384,3 +384,18 @@ In the same directory where you saved *peanuts.js*, start the *Node.js REPL* wit
 > .load peanuts.js
 ```
 
+The .load command will execute the single console statement and display the following output:
+
+```javascript
+console.log('I love peanuts!');
+ 
+I love peanuts!
+undefined
+> 
+```
+
+When your *REPL* usage goes longer than expected, or you believe you have an interesting code snippet worth sharing or explore in more depth, you can use the *.save* and *.load* commands to make both those goals possible.
+
+## Conclusion
+
+The *REPL* is an interactive environment that allows you to execute JavaScript code without first having to write it to a file.
