@@ -94,3 +94,72 @@ The first result is the output from *console.log*, which prints a message to the
 ### Creating Variables
 
 Rarely do you just work with literals in JavaScript. Creating a variable in the *REPL* works in the same fashion as working with *.js* files. Type the following at the prompt:
+
+```javascript
+> let age = 30
+```
+
+Pressing ENTER results in:
+
+```javascript
+undefined
+```
+
+Like before, with *console.log*, the return value of this command is undefined. The *age* variable will be available until you exit the *REPL* session. For example, you can multiply *age* by *two*. Type the following at the prompt and press *ENTER*:
+
+```javascript
+> age * 2
+```
+
+The result is:
+
+```javascript
+60
+```
+
+Because the *REPL* returns values, you don’t need to use *console.log* or similar functions to see the output on the screen. By default, any returned value will appear on the screen.
+
+### Multi-line Blocks
+
+Multi-line blocks of code are supported as well. For example, you can create a function that adds 3 to a given number. Start the function by typing the following:
+
+```javascript
+> const add3 = (num) => {
+```
+
+Then, pressing ENTER will change the prompt to:
+
+```javascript
+...
+```
+
+The *REPL* noticed an open curly bracket and therefore assumes you’re writing more than one line of code, which needs to be indented. To make it easier to read, the *REPL* adds 3 dots and a space on the next line, so the following code appears to be indented.
+
+Enter the second and third lines of the function, one at a time, pressing ENTER after each:
+
+```javascript
+... return num + 3;
+... }
+```
+
+Pressing ENTER after the closing curly bracket will display an *undefined*, which is the *“return value”* of the function assignment to a variable. The *...* prompt is now gone and the *>* prompt returns:
+
+```javascript
+undefined
+> 
+```
+
+Now, call add3() on a value:
+
+```javascript
+> add3(10)
+```
+
+As expected, the output is:
+
+```javascript
+13
+```
+
+You can use the *REPL* to try out bits of JavaScript code before including them into your programs. The *REPL* also includes some handy shortcuts to make that process easier.
+
