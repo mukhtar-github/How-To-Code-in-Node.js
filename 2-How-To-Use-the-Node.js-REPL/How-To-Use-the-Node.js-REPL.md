@@ -322,3 +322,15 @@ In the next line, the REPL will display:
 ```javascript
 [ 'banana', 'apple', 'mango' ]
 ```
+
+Save this variable to a new file, *fruits.js*:
+
+```javascript
+> .save fruits.js
+```
+
+We’re greeted with the confirmation:
+
+```javascript
+Session saved to: fruits.js
+```
