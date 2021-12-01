@@ -163,3 +163,61 @@ As expected, the output is:
 
 You can use the *REPL* to try out bits of JavaScript code before including them into your programs. The *REPL* also includes some handy shortcuts to make that process easier.
 
+## Step 3 — Mastering REPL Shortcuts
+
+The REPL provides shortcuts to decrease coding time when possible. It keeps a history of all the entered commands and allows us to cycle through them and repeat a command if necessary.
+
+For an example, enter the following string:
+
+```javascript
+"The answer to life the universe and everything is 32"
+```
+
+This results in:
+
+```javascript
+'The answer to life the universe and everything is 32'
+```
+
+If we’d like to edit the string and change the *“32”* to *“42”*, at the prompt, use the UP arrow key to return to the previous command:
+
+```javascript
+"The answer to life the universe and everything is 32"
+```
+
+Move the cursor to the left, delete *3*, enter *4*, and press ENTER again:
+
+```javascript
+'The answer to life the universe and everything is 42'
+```
+
+Continue to press the *UP* arrow key, and you’ll go further back through your history until the first used command in the current *REPL* session. In contrast, pressing *DOWN* will iterate towards the more recent commands in the history.
+
+When you are done maneuvering through your command history, press *DOWN* repeatedly until you have exhausted your recent command history and are once again seeing the prompt.
+
+To quickly get the last evaluated value, use the underscore character. At the prompt, type *_* and press ENTER:
+
+```javascript
+> _
+```
+
+The previously entered string will appear again:
+
+```javascript
+'The answer to life the universe and everything is 42'
+```
+
+The *REPL* also has an autocompletion for functions, variables, and keywords. If you wanted to find the square root of a number using the *Math.sqrt* function, enter the first few letters, like so:
+
+```javascript
+> Math.sq
+```
+
+Then press the Math.sq key and the REPL will autocomplete the function:
+
+```javascript
+> Math.sqrt
+[Function: sqrt]
+```
+
+When there are multiple possibilities for autocompletion, you’re prompted with all the available options. For an example, enter just:
