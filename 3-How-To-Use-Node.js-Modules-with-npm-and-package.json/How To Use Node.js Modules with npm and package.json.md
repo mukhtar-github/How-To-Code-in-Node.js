@@ -142,3 +142,29 @@ For example, you may want to blog about the *locator* project that you’re curr
 ```javascript
 npm i hexo-cli -g
 ```
+
+To install a package globally, you append the -g flag to the command.
+
+> Note: If you get a permission error trying to install this package globally, your system may require super user privileges to run the command. Try again with *sudo npm i hexo-cli -g*.
+
+Test that the package was successfully installed by typing:
+
+```javascript
+hexo --version
+```
+
+So far, you have learned how to install *modules* with *npm*. You can install *packages* to a project locally, either as a *production or development dependency*. You can also install *packages* based on pre-existing *package.json or package-lock.json* files, allowing you to develop with the same *dependencies* as your peers. Finally, you can use the *-g* flag to install *packages* globally, so you can access them regardless of whether you’re in a *Node.js* project or not. Now that you can install *modules*, in the next section you will practice techniques to administer your *dependencies*.
+
+## Step 3 — Managing Modules
+
+A complete *package manager* can do a lot more than install *modules*. *npm* has over 20 commands relating to *dependency management* available. In this step, you will:
+
+* List *modules* you have installed.
+* Update *modules* to a more recent version.
+* Uninstall *modules* you no longer need.
+* Perform a security audit on your *modules* to find and fix security flaws.
+
+While these examples will be done in your locator folder, all of these commands can be run globally by appending the -g flag at the end of them, exactly like you did when installing globally.
+
+### Listing Modules
+
