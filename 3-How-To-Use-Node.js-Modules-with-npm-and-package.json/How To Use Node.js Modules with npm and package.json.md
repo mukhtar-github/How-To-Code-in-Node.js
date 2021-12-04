@@ -20,6 +20,11 @@ In this tutorial, you will manage *packages with npm*. The first step will be to
 
 We begin this tutorial by setting up the *example project* — a fictional *Node.js locator module* that gets the user’s *IP* address and returns the *country of origin*. You will not be coding the *module* in this tutorial. However, the *packages* you manage would be relevant if you were developing it.
 
-First, you will create a package.json file to store useful metadata about the project and help you manage the project’s dependent Node.js modules. As the suffix suggests, this is a JSON (JavaScript Object Notation) file. JSON is a standard format used for sharing, based on JavaScript objects and consisting of data stored as key-value pairs. If you would like to learn more about JSON, read our Introduction to JSON article.
+First, you will create a *package.json* file to store useful metadata about the project and help you manage the project’s dependent *Node.js modules*. As the suffix suggests, this is a *JSON (JavaScript Object Notation) file*. *JSON* is a standard format used for sharing, based on JavaScript objects and consisting of data stored as *key-value pairs*. If you would like to learn more about *JSON*, read our Introduction to *JSON* article.
 
-Since a package.json file contains numerous properties, it can be cumbersome to create manually, without copy and pasting a template from somewhere else. To make things easier, npm provides the init command. This is an interactive command that asks you a series of questions and creates a package.json file based on your answers.
+Since a *package.json* file contains numerous properties, it can be cumbersome to create manually, without copy and pasting a template from somewhere else. To make things easier, npm provides the *init* command. This is an interactive command that asks you a series of questions and creates a *package.json* file based on your answers.
+
+### Using the init Command
+
+First, set up a project so you can practice managing modules. In your shell, create a new folder called locator:
+
