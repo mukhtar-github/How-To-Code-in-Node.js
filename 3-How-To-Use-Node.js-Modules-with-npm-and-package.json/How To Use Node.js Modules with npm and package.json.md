@@ -116,3 +116,29 @@ To install the required modules for this project, type:
 ```javascript
 npm i
 ```
+
+npm will check for a package-lock.json file to install the modules. If no lock file is available, it would read from the package.json file to determine the installations. It is usually quicker to install from package-lock.json, since the lock file contains the exact version of modules and their dependencies, meaning npm does not have to spend time figuring out a suitable version to install.
+
+When deploying to production, you may want to skip the development dependencies. Recall that development dependencies are stored in the *devDependencies* section of package.json, and have no impact on the running of your app. When installing modules as part of the CI/CD process -- (CI/CD is a method to frequently deliver apps to customers by introducing automation into the stages of app development) -- to deploy your application, omit the dev dependencies by running:
+
+```javascript
+npm i --production
+```
+
+The *--production* flag ignores the *devDependencies* section during installation. For now, stick with your development build.
+
+Before moving to the next section, return to the *locator* folder:
+
+```javascript
+cd ../locator
+```
+
+### Global Installations
+
+So far, you have been installing *npm modules* for the *locator* project. *npm* also allows you to install *packages* globally. This means that the *package* is available to your user in the wider system, like any other shell command. This ability is useful for the many *Node.js* modules that are *CLI* tools.
+
+For example, you may want to blog about the *locator* project that you’re currently working on. To do so, you can use a library like *Hexo* to create and manage your static *website blog*. Install the *Hexo CLI* globally like this:
+
+```javascript
+npm i hexo-cli -g
+```
