@@ -80,4 +80,39 @@ Install a linter as a development dependency for your project. Try this out in y
 npm i eslint@6.0.0 --save-dev
 ```
 
-In this command, you used the *--save-dev* flag. This will save eslint as a dependency that is only needed for development. Notice also that you added *@6.0.0* to your dependency name. When modules are updated, they are tagged with a version. The @ tells npm to look for a specific tag of the module you are installing. Without a specified tag, npm installs the latest tagged version. Open *package.json* again:
+In this command, you used the *--save-dev* flag. This will save eslint as a dependency that is only needed for development. Notice also that you added *@6.0.0* to your dependency name. When modules are updated, they are tagged with a version. The @ tells *npm* to look for a specific tag of the module you are installing. Without a specified tag, *npm* installs the latest tagged version. Open *package.json* again:
+
+### Automatically Generated Files: *node_modules* and *package-lock.json*
+
+When you first install a *package* to a *Node.js project, npm* automatically creates the *node_modules* folder to store the modules needed for your project and the *package-lock.json* file.
+
+The *node_modules* folder contains every installed dependency for your project. In most cases, you should *not* commit this folder into your version controlled repository. As you install more *dependencies*, the size of this folder will quickly grow. Furthermore, the *package-lock.json* file keeps a record of the exact versions installed in a more succinct way, so including *node_modules* is not necessary.
+
+While the *package.json* file lists *dependencies* that tell us the suitable versions that should be installed for the project, the *package-lock.json* file keeps track of all changes in *package.json* or *node_modules* and tells us the exact version of the *package* installed. You usually commit this to your version controlled repository instead of *node_modules*, as it’s a cleaner representation of all your *dependencies*.
+
+### Installing from package.json
+
+With your *package.json* and *package-lock.json* files, you can quickly set up the same *project dependencies* before you start development on a *new project*. To demonstrate this, move up a level in your directory tree and create a new folder named *cloned_locator* in the same directory level as *locator*:
+
+```javascript
+cd ..
+mkdir cloned_locator
+```
+
+Move into your new directory:
+
+```javascript
+cd cloned_locator
+```
+
+Now copy the package.json and package-lock.json files from locator to cloned_locator:
+
+```javascript
+cp ../locator/package.json ../locator/package-lock.json .
+```
+
+To install the required modules for this project, type:
+
+```javascript
+npm i
+```
