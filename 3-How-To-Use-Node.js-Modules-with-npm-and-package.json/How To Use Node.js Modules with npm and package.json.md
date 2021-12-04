@@ -168,3 +168,28 @@ While these examples will be done in your locator folder, all of these commands 
 
 ### Listing Modules
 
+If you would like to know which *modules* are installed in a project, it would be easier to use the *list or ls* command instead of reading the *package.json* directly. To do this, enter:
+
+```javascript
+npm ls
+```
+
+By default, ls shows the entire dependency tree—the modules your project depends on and the modules that your dependencies depend on. This can be a bit unwieldy if you want a high-level overview of what’s installed.
+
+To only print the modules you installed without their dependencies, enter the following in your shell:
+
+```javascript
+npm ls --depth 0
+```
+
+Your output will be:
+
+```javascript
+locator@1.0.0 /home/mukhtar/Documents/HowTo-Code-in-Node.js/3-How-To-Use-Node.js-Modules-with-npm-and-package.json/locator
+├── axios@0.24.0
+└── eslint@6.0.0
+```
+
+The *--depth* option allows you to specify what level of the dependency tree you want to see. When it’s *0*, you only see your top level dependencies.
+
+### Updating Modules
