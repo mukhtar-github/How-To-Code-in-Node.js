@@ -6,7 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["ip","geo","country"],
+  "keywords": [
+    "ip",
+    "geo",
+    "country"
+  ],
   "author": "Mukhtar",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
 }

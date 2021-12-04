@@ -54,3 +54,16 @@ After the repository prompt, the command asks for **keywords**. This property is
 
 The next field in the prompt is **author**. This is useful for users of your module who want to get in contact with you. For example, if someone discovers an exploit in your module, they can use this to report the problem so that you can fix it. The *author* field is a string in the following format: *"Name - Email - (Website)". For example, "Sammy -- sammy@your_domain -- (<https://your_domain>)"* is a valid *author*. The email and website data are optional — a valid *author* could just be a name.
 
+Now that you have your package.json file, you can test out installing modules in the next step.
+
+## Step 2 — Installing Modules
+
+It is common in software development to use external libraries to perform ancillary tasks in projects. This allows the developer to focus on the business logic and create the application more quickly and efficiently.
+
+For example, if our sample *locator* module has to make an external *API* request to get *geographical data*, we could use an *HTTP* library to make that task easier. Since our main goal is to return *pertinent geographical data to the user*, we could install a *package* that makes *HTTP* requests easier for us instead of rewriting this code for ourselves, a task that is beyond the scope of our project.
+
+Let’s run through this example. In your *locator* application, you will use the *axios library*, which will help you make *HTTP* requests. Install it by entering the following in your shell:
+
+```javascript
+npm install axios --save
+```
