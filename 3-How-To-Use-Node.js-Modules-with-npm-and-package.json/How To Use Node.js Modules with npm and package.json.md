@@ -67,3 +67,17 @@ Let’s run through this example. In your *locator* application, you will use th
 ```javascript
 npm install axios --save
 ```
+
+### Development Dependencies
+
+Packages that are used for the development of a project but not for building or running it in production are called development dependencies. They are not necessary for your module or application to work in production, but may be helpful while writing the code.
+
+For example, it’s common for developers to use code linters to ensure their code follows best practices and to keep the style consistent. While this is useful for development, this only adds to the size of the distributable without providing a tangible benefit when deployed in production.
+
+Install a linter as a development dependency for your project. Try this out in your shell:
+
+```javascript
+npm i eslint@6.0.0 --save-dev
+```
+
+In this command, you used the *--save-dev* flag. This will save eslint as a dependency that is only needed for development. Notice also that you added *@6.0.0* to your dependency name. When modules are updated, they are tagged with a version. The @ tells npm to look for a specific tag of the module you are installing. Without a specified tag, npm installs the latest tagged version. Open *package.json* again:
