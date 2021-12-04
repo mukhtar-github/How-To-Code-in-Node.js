@@ -9,7 +9,7 @@ Because of such features as its speedy *Input/Output (I/O)* performance and its 
 The *Node.js Package Manager (npm)* is the default and most popular *package manager* in the *Node.js* ecosystem, and is primarily used to *install and manage* external *modules* in a *Node.js* project. It is also commonly used to install a wide range of *CLI* tools and run *project scripts*. *npm* tracks the *modules* installed in a project with the *package.json* file, which resides in a project’s directory and contains:
 
 * All the modules needed for a project and their installed versions
-* All the metadata for a project, such as the author, the license, etc.
+* All the metadata for a project, such as the *author*, the license, etc.
 * Scripts that can be run to automate tasks within the project
 
 As you create more complex *Node.js* projects, managing your *metadata and dependencies* with the *package.json* file will provide you with more predictable builds, since all external *dependencies* are kept the same. The file will keep track of this information automatically; while you may change the file directly to update your *project’s metadata*, you will seldom need to interact with it directly to *manage modules*.
@@ -50,4 +50,7 @@ npm init
 
 The next field is **description** — a useful string to explain what your *Node.js module* does. Our fictional *locator project* would get the user’s *IP address* and return the country of origin. A fitting *description* would be *"Finds the country of origin of the incoming request"*, so type in something like this and press ENTER. The *description* is very useful when people are searching for your module.
 
-After the repository prompt, the command asks for **keywords**. This property is an array of strings with useful terms that people can use to find your repository. It’s best to have a small set of words that are really relevant to your project, so that searching can be more targeted. List these *keywords* as a string with commas separating each value. For this sample project, type *ip,geo,country* at the prompt. The finished package.json will have three items in the array for *keywords*.
+After the repository prompt, the command asks for **keywords**. This property is an array of strings with useful terms that people can use to find your repository. It’s best to have a small set of words that are really relevant to your project, so that searching can be more targeted. List these *keywords* as a string with commas separating each value. For this sample project, type *"ip","geo","country"* at the prompt. The finished *package.json* will have three items in the array for *keywords*.
+
+The next field in the prompt is **author**. This is useful for users of your module who want to get in contact with you. For example, if someone discovers an exploit in your module, they can use this to report the problem so that you can fix it. The *author* field is a string in the following format: *"Name - Email - (Website)". For example, "Sammy -- sammy@your_domain -- (<https://your_domain>)"* is a valid *author*. The email and website data are optional — a valid *author* could just be a name.
+
