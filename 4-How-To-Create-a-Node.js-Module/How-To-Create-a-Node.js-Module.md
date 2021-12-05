@@ -24,3 +24,29 @@ In your terminal, make a new folder called *colors* and move into it:
 mkdir colors
 cd colors
 ```
+
+Initialize npm so other programs can import this *module* later in the tutorial:
+
+```javascript
+npm init -y
+```
+
+You used the *-y* flag to skip the usual prompts to customize your *package.json*. If this were a *module* you wished to publish to npm, you would answer all these prompts with relevant data, as explained in *How To Use Node.js Modules with npm and package.json*.
+
+In this case, your output will be:
+
+```javascript
+// Output
+{
+  "name": "colors",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
