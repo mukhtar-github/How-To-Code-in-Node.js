@@ -97,6 +97,14 @@ When other *modules* import this *module*, both *allColors* and *getRandomColor(
 
 Save and exit the file.
 
-So far, you have created a *module* that contains an *array of colors* and a f*unction that returns one randomly*. You have also *exported the array and function*, so that external programs can use them. In the next step, you will use your *module* in other applications to demonstrate the effects of *export*.
+So far, you have created a *module* that contains an *array of colors* and a *function that returns one randomly*. You have also *exported the array and function*, so that external programs can use them. In the next step, you will use your *module* in other applications to demonstrate the effects of *export*.
 
+## Step 2 — Testing your Module with the REPL
 
+Before you build a complete application, take a moment to confirm that your *module* is working. In this step, you will use the *REPL* to load the *colors module*. While in the *REPL*, you will call the *getRandomColor()* function to see if it behaves as you expect it to.
+
+Start the *Node.js REPL* in the same folder as the *index.js* file:
+
+```javascript
+node
+```
