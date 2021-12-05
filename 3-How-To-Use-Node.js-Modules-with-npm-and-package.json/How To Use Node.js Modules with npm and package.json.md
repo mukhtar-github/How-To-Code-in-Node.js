@@ -281,6 +281,59 @@ This shows that you have successfully uninstalled the axios package.
 
 ### Auditing Modules
 
-npm provides an audit command to highlight potential security risks in your dependencies. To see the audit in action, install an outdated version of the request module by running the following:
+*npm* provides an audit command to highlight potential security risks in your dependencies. To see the audit in action, install an outdated version of the *request* module by running the following:
 
+```javascript
+npm i request@2.60.0
+```
+
+When you install this outdated version of *request*, you’ll notice output similar to the following:
+
+```javascript
+// Output
++ request@2.60.0
+added 54 packages from 49 contributors and audited 243 packages in 7.26s
+found 6 moderate severity vulnerabilities
+  run `npm audit fix` to fix them, or `npm audit` for details
+```
+
+*npm* is telling you that you have vulnerabilities in your *dependencies*. To get more details, *audit* your entire project with:
+
+```javascript
+npm audit
+```
+
+The audit command shows tables of output highlighting security flaws:
+
+```javascript
+Output
+                       === npm audit security report ===
+
+# Run  npm install request@2.88.0  to resolve 1 vulnerability
+┌───────────────┬──────────────────────────────────────────────────────────────┐
+│ Moderate      │ Memory Exposure                                              │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Package       │ tunnel-agent                                                 │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Dependency of │ request                                                      │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Path          │ request > tunnel-agent                                       │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ More info     │ https://npmjs.com/advisories/598                             │
+└───────────────┴──────────────────────────────────────────────────────────────┘
+
+# Run  npm update request --depth 1  to resolve 1 vulnerability
+┌───────────────┬──────────────────────────────────────────────────────────────┐
+│ Moderate      │ Remote Memory Exposure                                       │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Package       │ request                                                      │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Dependency of │ request                                                      │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Path          │ request                                                      │
+├───────────────┼──────────────────────────────────────────────────────────────┤
+│ More info     │ https://npmjs.com/advisories/309                             │
+└───────────────┴──────────────────────────────────────────────────────────────┘
+...
+```
 
