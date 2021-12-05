@@ -50,3 +50,33 @@ In this case, your output will be:
   "license": "ISC"
 }
 ```
+
+Now, open up a command-line text editor such as vim and create a new file to serve as the entry point for your *module*:
+
+```javascript
+vim index.js
+```
+
+Your *module* will do a few things. First, you’ll define a *Color class*. Your *Color class* will be instantiated with its name and *HTML code*. Add the following lines to create the class:
+
+```javascript
+class Color {
+  constructor(name, code) {
+    this.name = name;
+    this.code = code;
+  }
+}
+```
+
+Now that you have your *data structure for Color*, add some instances into your *module*. Write the following highlighted array to your file:
+
+```javascript
+const allColors = [
+  new Color('brightred', '#E74C3C'),
+  new Color('soothingpurple', '#9B59B6'),
+  new Color('skyblue', '#5DADE2'),
+  new Color('leafygreen', '#48C9B0'),
+  new Color('sunkissedyellow', '#F4D03F'),
+  new Color('groovygray', '#D7DBDD'),
+];
+```
