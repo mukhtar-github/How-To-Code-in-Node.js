@@ -68,7 +68,7 @@ class Color {
 }
 ```
 
-Now that you have your *data structure for Color*, add some instances into your *module*. Write the following highlighted array to your file:
+Now that you have your *data structure for Color*, add some instances into your *module*. Write the following highlighted *array* to your file:
 
 ```javascript
 const allColors = [
