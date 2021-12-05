@@ -139,3 +139,24 @@ The *REPL* shows us the value of *colors*, which are all the *functions and obje
 Recall that you added *getRandomColor() and allColors* to *exports* in the *colors module*. For that reason, you see them both in the *REPL* when they are *imported*.
 
 At the prompt, test the *getRandomColor()* function:
+
+```javascript
+colors.getRandomColor();
+```
+
+You’ll be prompted with a random color:
+
+```javascript
+// Output
+Color { name: 'leafygreen', code: '#48C9B0' }
+```
+
+As the *index is random*, your output may vary. Now that you confirmed that the *colors module* is working, exit the *Node.js REPL*:
+
+```javascript
+.exit
+```
+
+This will return you to your terminal command line.
+
+You have just confirmed that your module works as expected using the *REPL*. Next, you will apply these same concepts and load your *module* into an application, as you would do in a *real project*.
