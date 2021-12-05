@@ -193,3 +193,47 @@ locator@1.0.0 /home/mukhtar/Documents/HowTo-Code-in-Node.js/3-How-To-Use-Node.js
 The *--depth* option allows you to specify what level of the dependency tree you want to see. When it’s *0*, you only see your top level dependencies.
 
 ### Updating Modules
+
+It is a good practice to keep your npm modules up to date. This improves your likelihood of getting the latest security fixes for a module. Use the *outdated* command to check if any modules can be updated:
+
+```javascript
+npm outdated
+```
+
+You will get output like the following:
+
+```javascript
+Package  Current  Wanted  Latest  Location
+eslint     6.0.0   6.8.0   8.4.0  locator
+```
+
+This command first lists the *Package* that’s installed and the *Current* version. The *Wanted* column shows which version satisfies your version requirement in *package.json*. The *Latest* column shows the most recent version of the module that was published.
+
+The *Location* column states where in the dependency tree the package is located. The *outdated* command has the *--depth* flag like *ls*. By default, the depth is *0*.
+
+It seems that you can update *eslint* to a more recent version. Use the *update or up* command like this:
+
+```javascript
+npm up eslint
+```
+
+The output of the command will contain the version installed:
+
+```javascript
+npm WARN locator@1.0.0 No repository field.
+
++ eslint@6.8.0
+added 14 packages from 5 contributors, removed 4 packages, updated 21 packages, moved 1 package and audited 135 packages in 27.968s
+
+10 packages are looking for funding
+  run `npm fund` for details
+
+found 2 moderate severity vulnerabilities
+  run `npm audit fix` to fix them, or `npm audit` for details
+```
+
+If you wanted to update all modules at once, then you would enter:
+
+```javascript
+npm up
+```
