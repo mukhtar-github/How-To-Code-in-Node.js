@@ -267,6 +267,20 @@ found 2 moderate severity vulnerabilities
 It doesn’t explicitly say that *axios* was removed. To verify that it was uninstalled, list the dependencies once again:
 
 ```javascript
+npm ls --depth 0
+```
+
+Now, we only see that eslint is installed:
+
+```javascript
 locator@1.0.0 /home/mukhtar/Documents/HowTo-Code-in-Node.js/3-How-To-Use-Node.js-Modules-with-npm-and-package.json/locator
 └── eslint@6.8.0
 ```
+
+This shows that you have successfully uninstalled the axios package.
+
+### Auditing Modules
+
+npm provides an audit command to highlight potential security risks in your dependencies. To see the audit in action, install an outdated version of the request module by running the following:
+
+
