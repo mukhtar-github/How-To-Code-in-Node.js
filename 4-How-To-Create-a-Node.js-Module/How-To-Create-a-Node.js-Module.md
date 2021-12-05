@@ -213,3 +213,24 @@ You just installed your *colors module* in the *new project*. Open the *package.
 ```javascript
 vim package.json
 ```
+
+You will find that the following lines have been added:
+
+```javascript
+"dependencies": {
+    "colors": "file:../colors"
+  }
+```
+
+The colors module was copied to your *node_modules* directory. Verify it’s there with the following command:
+
+```javascript
+ls node_modules
+```
+
+This will give the following output:
+
+```javascript
+// Output
+colors
+```
