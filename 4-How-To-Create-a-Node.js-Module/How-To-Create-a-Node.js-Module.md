@@ -108,3 +108,27 @@ Start the *Node.js REPL* in the same folder as the *index.js* file:
 ```javascript
 node
 ```
+
+When the *REPL* has started, you will see the *>* prompt. This means you can enter *JavaScript code* that will be immediately evaluated. If you would like to read more about this, follow our guide on *using the REPL*.
+
+First, enter the following:
+
+```javascript
+colors = require('./index');
+```
+
+In this command, *require()* loads the *colors module* at its entry point. When you press *ENTER* you will get:
+
+```javascript
+{
+  getRandomColor: [Function],
+  allColors: [
+    Color { name: 'brightred', code: '#E74C3C' },
+    Color { name: 'soothingpurple', code: '#9B59B6' },
+    Color { name: 'skyblue', code: '#5DADE2' },
+    Color { name: 'leafygreen', code: '#48C9B0' },
+    Color { name: 'sunkissedyellow', code: '#F4D03F' },
+    Color { name: 'groovygray', code: '#D7DBDD' }
+  ]
+}
+```
