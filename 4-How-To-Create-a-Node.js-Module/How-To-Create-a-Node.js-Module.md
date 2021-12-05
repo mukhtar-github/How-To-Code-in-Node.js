@@ -160,3 +160,44 @@ As the *index is random*, your output may vary. Now that you confirmed that the 
 This will return you to your terminal command line.
 
 You have just confirmed that your module works as expected using the *REPL*. Next, you will apply these same concepts and load your *module* into an application, as you would do in a *real project*.
+
+## Step 3 — Saving your Local Module as a Dependency
+
+While testing your *module* in the *REPL*, you imported it with a *relative path*. This means you used the location of the *index.js* file in relation to the working directory to get its contents. While this works, it is usually a better programming experience to *import modules* by their *names* so that the *import* is not broken when the context is changed. In this step, you will install the *colors module* with *npm’s local module install feature*.
+
+Set up a new *Node.js module* outside the *colors* folder. First, go to the previous directory and create a new folder:
+
+```javascript
+cd ..
+mkdir really-large-application
+```
+
+Now move into your new project:
+
+```javascript
+cd really-large-application
+```
+
+Like with the colors module, initialize your folder with npm:
+
+```javascript
+npm init -y
+```
+
+The following *package.json* will be generated:
+
+```javascript
+// Output
+{
+  "name": "really-large-application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
