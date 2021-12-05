@@ -201,3 +201,15 @@ The following *package.json* will be generated:
   "license": "ISC"
 }
 ```
+
+Now, install your *colors module* and use the *--save* flag so it will be recorded in your *package.json* file:
+
+```javascript
+npm install --save ../colors
+```
+
+You just installed your *colors module* in the *new project*. Open the *package.json* file to see the *new local dependency*:
+
+```javascript
+vim package.json
+```
