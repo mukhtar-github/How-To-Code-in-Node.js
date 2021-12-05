@@ -14,8 +14,13 @@ In this tutorial, you will create a *Node.js module* that suggests what *color w
 
 This step will guide you through creating your first *Node.js module*. Your *module* will contain a collection of *colors* in an array and provide a function to get one at random. You will use the *Node.js* built-in exports property to make the *function and array* available to external programs.
 
-First, you’ll begin by deciding what data about *colors* you will store in your *module*. Every *color* will be an object that contains a *name property* that humans can easily identify, and a *code property* that is a string containing an *HTML color code*. *HTML color codes* are *six-digit hexadecimal numbers* that allow you to change the *color of elements on a web page*. You can learn more about *HTML color codes* by reading this *HTML Color Codes* and *Names article*.
+First, you’ll begin by deciding what data about *colors* you will store in your *module*. Every *color* will be an object that contains a *name property* that humans can easily identify, and a *code property* that is a string containing an *HTML color code*. *HTML color codes* are *six-digit hexadecimal numbers* that allow you to change the *color of elements on a web page*. You can learn more about *HTML color codes* by reading this *HTML Color Codes and Names* article.
 
-You will then decide what *colors* you want to support in your *module*. Your *module* will contain an array called *allColors* that will contain six *colors*. Your *module* will also include a function called *getRandomColor()* that will randomly select a *color* from your array and return it.
+You will then decide what *colors* you want to support in your *module*. Your *module* will contain an array called *allColors* that will contain *six colors*. Your *module* will also include a function called *getRandomColor()* that will randomly select a *color* from your array and return it.
 
 In your terminal, make a new folder called *colors* and move into it:
+
+```javascript
+mkdir colors
+cd colors
+```
