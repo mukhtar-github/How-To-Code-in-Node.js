@@ -337,3 +337,34 @@ Output
 ...
 ```
 
+You can see the path of the vulnerability, and sometimes npm offers ways for you to fix it. You can run the update command as suggested, or you can run the fix subcommand of audit. In your shell, enter:
+
+```javascript
+npm audit fix
+```
+
+You will see similar output to:
+
+```javascript
+// Output
++ request@2.88.0
+added 19 packages from 24 contributors, removed 32 packages and updated 12 packages in 6.223s
+fixed 2 of 6 vulnerabilities in 243 scanned packages
+  4 vulnerabilities required manual review and could not be updated
+```
+
+*npm* was able to safely update two of the packages, decreasing your vulnerabilities by the same amount. However, you still have four vulnerabilities in your dependencies. The *audit fix* command does not always fix every problem. Although a version of a module may have a security vulnerability, if you update it to a version with a different API then it could break code higher up in the dependency tree.
+
+You can use the *--force* parameter to ensure the vulnerabilities are gone, like this:
+
+```javascript
+npm audit fix --force
+```
+
+As mentioned before, this is not recommended unless you are sure that it won’t break functionality.
+
+### Conclusion
+
+In this tutorial, you went through various exercises to demonstrate how Node.js modules are organized into packages, and how these packages are managed by npm. In a Node.js project, you used npm packages as dependencies by creating and maintaining a *package.json* file -- a record of your *project’s metadata*, including what modules you installed. You also used the npm CLI tool to install, update, and remove modules, in addition to listing the dependency tree for your projects and checking and updating modules that are outdated.
+
+In the future, leveraging existing code by using modules will speed up development time, as you don’t have to repeat functionality. You will also be able to create your own npm modules, and these will in turn will be managed by others via npm commands. As for next steps, experiment with what you learned in this tutorial by installing and testing the variety of packages out there. See what the ecosystem provides to make problem solving easier. For example, you could try out TypeScript, a superset of JavaScript, or turn your website into mobile apps with Cordova. If you’d like to learn more about Node.js, see our other Node.js tutorials.
