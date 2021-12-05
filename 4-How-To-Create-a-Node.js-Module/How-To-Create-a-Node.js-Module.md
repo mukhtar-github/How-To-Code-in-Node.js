@@ -120,6 +120,7 @@ colors = require('./index');
 In this command, *require()* loads the *colors module* at its entry point. When you press *ENTER* you will get:
 
 ```javascript
+// Output
 {
   getRandomColor: [Function],
   allColors: [
@@ -132,3 +133,9 @@ In this command, *require()* loads the *colors module* at its entry point. When 
   ]
 }
 ```
+
+The *REPL* shows us the value of *colors*, which are all the *functions and objects imported* from the *index.js* file. When you use the *require* keyword, *Node.js* returns all the contents within the *exports* object of a *module*.
+
+Recall that you added *getRandomColor() and allColors* to *exports* in the *colors module*. For that reason, you see them both in the *REPL* when they are *imported*.
+
+At the prompt, test the *getRandomColor()* function:
