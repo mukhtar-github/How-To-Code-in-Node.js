@@ -13,9 +13,7 @@
   ],
   "author": "Mukhtar",
   "license": "ISC",
-  "dependencies": {
-    "axios": "^0.24.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^6.8.0"
   }

@@ -237,3 +237,36 @@ If you wanted to update all modules at once, then you would enter:
 ```javascript
 npm up
 ```
+
+### Uninstalling Modules
+
+The npm *uninstall* command can remove modules from your projects. This means the module will no longer be installed in the *node_modules* folder, nor will it be seen in your *package.json* and *package-lock.json* files.
+
+Removing dependencies from a project is a normal activity in the software development lifecycle. A dependency may not solve the problem as advertised, or may not provide a satisfactory development experience. In these cases, it may better to *uninstall* the dependency and build your own module.
+
+Imagine that *axios* does not provide the development experience you would have liked for making HTTP requests. *Uninstall axios* with the *uninstall or un* command by entering:
+
+```javascript
+npm un axios
+```
+
+Your output will be similar to:
+
+```javascript
+npm WARN locator@1.0.0 No repository field.
+
+removed 2 packages and audited 133 packages in 4.05s
+
+12 packages are looking for funding
+  run `npm fund` for details
+
+found 2 moderate severity vulnerabilities
+  run `npm audit fix` to fix them, or `npm audit` for details
+```
+
+It doesn’t explicitly say that *axios* was removed. To verify that it was uninstalled, list the dependencies once again:
+
+```javascript
+locator@1.0.0 /home/mukhtar/Documents/HowTo-Code-in-Node.js/3-How-To-Use-Node.js-Modules-with-npm-and-package.json/locator
+└── eslint@6.8.0
+```
