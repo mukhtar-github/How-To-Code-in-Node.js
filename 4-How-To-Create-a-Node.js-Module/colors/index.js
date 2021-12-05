@@ -13,3 +13,9 @@ const allColors = [
   new Color('sunkissedyellow', '#F4D03F'),
   new Color('groovygray', '#D7DBDD'),
 ];
+
+exports.getRandomColor = () => {
+  return allColors[Math.floor(Math.random() * allColors.length)];
+}
+
+exports.allColors = allColors;

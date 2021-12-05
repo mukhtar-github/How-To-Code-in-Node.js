@@ -80,3 +80,23 @@ const allColors = [
   new Color('groovygray', '#D7DBDD'),
 ];
 ```
+
+Finally, enter a function that randomly selects an item from the allColors array you just created:
+
+```javascript
+exports.getRandomColor = () => {
+  return allColors[Math.floor(Math.random() * allColors.length)];
+}
+
+exports.allColors = allColors;
+```
+
+The *exports* keyword references a global object available in every *Node.js module*. All functions and objects stored in a module’s *exports object* are exposed when other *Node.js modules* import it. The *getRandomColor()* function was created directly on the *exports object*, for example. You then added an *allColors* property to the *exports object* that references the local constant *allColors array* created earlier in the script.
+
+When other *modules* import this *module*, both *allColors* and *getRandomColor()* will be exposed and available for usage.
+
+Save and exit the file.
+
+So far, you have created a *module* that contains an *array of colors* and a f*unction that returns one randomly*. You have also *exported the array and function*, so that external programs can use them. In the next step, you will use your *module* in other applications to demonstrate the effects of *export*.
+
+
