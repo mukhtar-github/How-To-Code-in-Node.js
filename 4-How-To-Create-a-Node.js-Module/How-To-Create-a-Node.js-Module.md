@@ -234,3 +234,20 @@ This will give the following output:
 // Output
 colors
 ```
+
+Use your installed *local module* in this new program. Re-open your text editor and create another *JavaScript file*:
+
+```javascript
+vim index.js
+```
+
+Your program will first import the *colors module*. It will then choose a *color* at random using the *getRandomColor()* function provided by the *module*. Finally, it will print a message to the console that tells the user what *color* to use.
+
+Enter the following code in *index.js*:
+
+```javascript
+const colors = require('colors');
+
+const chosenColor = colors.getRandomColor();
+console.log(`You should use ${chosenColor.name} on your website. It's HTML code is ${chosenColor.code}`);
+```
