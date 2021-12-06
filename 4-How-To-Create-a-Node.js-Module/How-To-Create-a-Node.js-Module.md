@@ -285,3 +285,19 @@ npm un colors
 
   1. Creating a *global link* to the *module*. *npm* creates a *symlink* between your *global node_modules* directory and the directory of your *module*. The *global node_modules* directory is the location in which all your *system-wide npm packages* are installed (*any package you install with the -g flag*).
 
+  2. Create a *local link*. *npm* creates a *symlink* between your *local project* that’s using the *module* and the *global link of the module*.
+
+First, create the *global link* by returning to the *colors* folder and using the *link* command:
+
+```javascript
+cd ../colors
+sudo npm link
+```
+
+Once complete, your shell will output:
+
+```javascript
+/usr/lib/node_modules/colors -> /home/mukhtar/Documents/HowTo-Code-in-Node.js/4-How-To-Create-a-Node.js-Module/colors
+```
+
+You just created a *symlink* in your *node_modules* folder to your *colors* directory.
