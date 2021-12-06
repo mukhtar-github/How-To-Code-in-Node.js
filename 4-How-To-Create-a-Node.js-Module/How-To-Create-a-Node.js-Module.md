@@ -297,7 +297,20 @@ sudo npm link
 Once complete, your shell will output:
 
 ```javascript
-/usr/lib/node_modules/colors -> /home/mukhtar/Documents/HowTo-Code-in-Node.js/4-How-To-Create-a-Node.js-Module/colors
+/usr/lib/node_modules/colors -> /home/mukhtar/Documents/How-To-Code-in-Node.js/4-How-To-Create-a-Node.js-Module/colors
 ```
 
 You just created a *symlink* in your *node_modules* folder to your *colors* directory.
+
+Return to the *really-large-application* folder and *link* the package:
+
+```javascript
+cd ../really-large-application
+sudo npm link colors
+```
+
+You will receive output similar to the following:
+
+```javascript
+/home/mukhtar/Documents/How-To-Code-in-Node.js/4-How-To-Create-a-Node.js-Module/really-large-application/node_modules/colors -> /usr/lib/node_modules/colors -> /home/mukhtar/Documents/How-To-Code-in-Node.js/4-How-To-Create-a-Node.js-Module/colors
+```
