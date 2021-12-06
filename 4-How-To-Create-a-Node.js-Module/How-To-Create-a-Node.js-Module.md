@@ -267,4 +267,4 @@ Your output will be similar to:
 You should use brightred on your website. It's HTML code is #E74C3C
 ```
 
-You’ve now successfully installed the *colors module* and can manage it like any other *npm package* used in your *project*. However, if you added more *colors* and functions to your local *colors module*, you would have to run *npm update* in your applications to be able to use the new options. In the next step, you will use the *local module colors* in another way and get automatic updates when the *module* code changes.
+You’ve now successfully installed the *colors module* and can manage it like any other *npm package* used in your *project*. However, if you added more *colors* and functions to your local *colors module*, you would have to run *npm update* in your applications to be able to use the new options. In the next step, you will use the *local module colors* in another way and get automatic *updates* when the *module* code changes.
