@@ -251,3 +251,18 @@ const colors = require('colors');
 const chosenColor = colors.getRandomColor();
 console.log(`You should use ${chosenColor.name} on your website. It's HTML code is ${chosenColor.code}`);
 ```
+
+Your application will now tell the user a *random color* option for a *website component*.
+
+Run this *script* with:
+
+```javascript
+node index.js
+```
+
+Your output will be similar to:
+
+```javascript
+// Output
+You should use brightred on your website. It's HTML code is #E74C3C
+```
