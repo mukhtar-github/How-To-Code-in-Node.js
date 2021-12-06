@@ -268,3 +268,16 @@ You should use brightred on your website. It's HTML code is #E74C3C
 ```
 
 You’ve now successfully installed the *colors module* and can manage it like any other *npm package* used in your *project*. However, if you added more *colors* and functions to your local *colors module*, you would have to run *npm update* in your applications to be able to use the new options. In the next step, you will use the *local module colors* in another way and get automatic *updates* when the *module* code changes.
+
+## Step 4 — Linking a Local Module
+
+If your *local module* is in heavy development, continually *updating packages* can be tedious. An alternative would be to *link the modules*. *Linking a module* ensures that any updates to the module are immediately reflected in the *applications* using it.
+
+In this step, you will link the *colors module* to your *application*. You will also modify the *colors module* and confirm that its most recent changes work in the *application* without having to *reinstall or upgrade*.
+
+First, *uninstall* your *local module*:
+
+```javascript
+npm un colors
+```
+
