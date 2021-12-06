@@ -281,3 +281,7 @@ First, *uninstall* your *local module*:
 npm un colors
 ```
 
+*npm links modules* by using *symbolic links (or symlinks)*, which are references that point to files or directories in your computer. *Linking a module* is done in two steps:
+
+  1. Creating a *global link* to the *module*. *npm* creates a *symlink* between your *global node_modules* directory and the directory of your *module*. The *global node_modules* directory is the location in which all your *system-wide npm packages* are installed (*any package you install with the -g flag*).
+
