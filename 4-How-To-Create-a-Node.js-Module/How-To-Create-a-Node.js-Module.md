@@ -314,3 +314,13 @@ You will receive output similar to the following:
 ```javascript
 /home/mukhtar/Documents/How-To-Code-in-Node.js/4-How-To-Create-a-Node.js-Module/really-large-application/node_modules/colors -> /usr/lib/node_modules/colors -> /home/mukhtar/Documents/How-To-Code-in-Node.js/4-How-To-Create-a-Node.js-Module/colors
 ```
+
+> Note: If you would like to type a bit less, you can use ln instead of link. For example, npm ln colors would have worked the exact same way.
+
+As the output shows, you just created a *symlink* from your *really-large-application’s local node_modules directory* to the *colors symlink* in your *global node_modules*, which points to the actual directory with the *colors module*.
+
+The *linking process* is complete. Run your file to ensure it still works:
+
+```javascript
+node index.js
+```
