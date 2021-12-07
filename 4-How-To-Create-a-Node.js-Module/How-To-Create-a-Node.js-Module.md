@@ -324,3 +324,17 @@ The *linking process* is complete. Run your file to ensure it still works:
 ```javascript
 node index.js
 ```
+
+Your output will be similar to:
+
+```javascript
+// Output
+You should use skyblue on your website. It's HTML code is #5DADE2
+```
+
+Your program functionality is intact. Next, test that *updates* are immediately applied. In your text editor, re-open the *index.js* file in the *colors module*:
+
+```javascript
+cd ../colors
+vim index.js
+```
