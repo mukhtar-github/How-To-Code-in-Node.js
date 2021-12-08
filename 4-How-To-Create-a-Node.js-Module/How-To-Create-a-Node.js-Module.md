@@ -338,3 +338,33 @@ Your program functionality is intact. Next, test that *updates* are immediately 
 cd ../colors
 vim index.js
 ```
+
+Now add a function that selects the very best shade of *blue* that exists. It takes no arguments, and always returns the *third item* of the *allColors* array. Add these lines to the end of the file:
+
+```javascript
+exports.getBlue = () => {
+  return allColors[2];
+}
+```
+
+Save and exit the file, then re-open the *index.js* file in the *really-large-application* folder:
+
+```javascript
+cd ../really-large-application
+vim index.js
+```
+
+Make a call to the newly created *getBlue()* function, and print a sentence with the color’s properties. Add these statements to the end of the file:
+
+```javascript
+const favoriteColor = colors.getBlue();
+console.log(`My favorite color is ${favoriteColor.name}/${favoriteColor.code}, btw`);
+```
+
+Save and exit the file.
+
+The code now uses the newly create getBlue() function. Execute the file as before:
+
+```javascript
+node index.js
+```
