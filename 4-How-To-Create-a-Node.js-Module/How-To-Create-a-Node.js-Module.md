@@ -368,3 +368,20 @@ The code now uses the newly create getBlue() function. Execute the file as befor
 ```javascript
 node index.js
 ```
+
+You will get output like:
+
+```javascript
+You should use groovygray on your website. It's HTML code is #D7DBDD
+My favorite color is skyblue/#5DADE2, btw
+```
+
+Your script was able to use the latest function in your *colors* module, without having to run *npm update*. This will make it easier to make changes to this application in development.
+
+As you write larger and more complex applications, think about how related code can be grouped into modules, and how you want these modules to be set up. If your module is only going to be used by one program, it can stay within the same project and be referenced by a relative path. If your module will later be shared separately or exists in a very different location from the project you are working on now, installing or linking might be more viable. Modules in active development also benefit from the automatic updates of linking. If the module is not under active development, using *npm install* may be the easier option.
+
+## Conclusion
+
+In this tutorial, you learned that a *Node.js* module is a JavaScript file with functions and objects that can be used by other programs. You then created a module and attached your functions and objects to the global *exports* object to make them available to external programs. Finally, you imported that module into a program, demonstrating how modules come together into larger applications.
+
+Now that you know how to create modules, think about the type of program you want to write and break it down into various components, keeping each unique set of activities and data in their own modules. The more practice you get writing modules, the better your ability to write quality *Node.js* programs on your learning journey. To work through an example of a *Node.js* application that uses modules, see our *How To Set Up a Node.js Application for Production on Ubuntu 18.04* tutorial.
