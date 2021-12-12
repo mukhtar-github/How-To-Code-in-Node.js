@@ -164,7 +164,84 @@ Output
 └────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
 ```
 
-As indicated above, PM2 automatically assigns an App name (based on the filename, without the .js extension) and a PM2 id. PM2 also maintains other information, such as the PID of the process, its current status, and memory usage.
+As indicated above, *PM2* automatically assigns an *App name* (based on the filename, without the *.js* extension) and a *PM2 id*. *PM2* also maintains other information, such as the *PID* of the process, its current status, and memory usage.
 
-Applications that are running under PM2 will be restarted automatically if the application crashes or is killed, but we can take an additional step to get the application to launch on system startup using the startup subcommand. This subcommand generates and configures a startup script to launch PM2 and its managed processes on server boots:
+Applications that are running under *PM2* will be restarted automatically if the application crashes or is killed, but we can take an additional step to get the application to launch on system *startup* using the *startup* subcommand. This subcommand generates and configures a *startup* script to launch *PM2* and its managed processes on server boots:
+
+```javascript
+pm2 startup systemd
+```
+
+The last line of the resulting output will include a command to run with superuser privileges in order to set *PM2* to start on boot:
+
+```javascript
+Output
+[PM2] Init System found: systemd
+sammy
+[PM2] To setup the Startup Script, copy/paste the following command:
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u sammy --hp /home/sammy
+```
+
+Run the command from the output, with your username in place of *sammy*:
+
+```javascript
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u sammy --hp /home/sammy
+```
+
+As an additional step, we can save the *PM2* process list and corresponding environments:
+
+```javascript
+pm2 save
+```
+
+You have now created a *systemd unit* that runs *pm2* for your user on boot. This *pm2* instance, in turn, runs *hello.js*.
+
+Start the service with *systemctl*:
+
+```javascript
+sudo systemctl start pm2-sammy
+```
+
+If at this point you encounter an error, you may need to reboot, which you can achieve with *sudo reboot*.
+
+Check the status of the *systemd unit*:
+
+```javascript
+systemctl status pm2-sammy
+```
+
+For a detailed overview of *systemd*, please review *Systemd Essentials: Working with Services, Units, and the Journal*.
+
+In addition to those we have covered, *PM2* provides many subcommands that allow you to manage or look up information about your applications.
+
+Stop an application with this command (specify the *PM2 App name or id*):
+
+```javascript
+pm2 stop app_name_or_id
+```
+
+Restart an application:
+
+```javascript
+pm2 restart app_name_or_id
+```
+
+List the applications currently managed by *PM2*:
+
+```javascript
+pm2 list
+```
+
+Get information about a specific application using its *App name*:
+
+```javascript
+pm2 info app_name
+```
+
+The *PM2* process monitor can be pulled up with the *monit* subcommand. This displays the *application status, CPU, and memory usage*:
+
+```javascript
+pm2 monit
+```
+
 
