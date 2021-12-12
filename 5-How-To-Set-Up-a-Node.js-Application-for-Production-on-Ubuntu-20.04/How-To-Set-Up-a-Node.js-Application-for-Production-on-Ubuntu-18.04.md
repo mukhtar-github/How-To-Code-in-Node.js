@@ -17,10 +17,44 @@ This guide assumes that you have the following:
 * *Nginx* installed, as covered in How To Install *Nginx* on Ubuntu 20.04.
 * *Nginx* configured with SSL using Let’s Encrypt certificates. *How To Secure Nginx with Let’s Encrypt on Ubuntu 20.04* will  walk you through the process.
 
-When you’ve completed the prerequisites, you will have a server serving your domain’s default placeholder page at https://example.com/.
+When you’ve completed the prerequisites, you will have a server serving your domain’s default placeholder page at <https://example.com/>.
 
 ## Step 1 — Installing Node.js
 
 Let’s begin by installing the latest LTS release of *Node.js*, using the NodeSource package archives.
 
 First, install the NodeSource PPA in order to get access to its contents. Make sure you’re in your home directory, and use *curl* to retrieve the installation script for the most recent LTS version of *Node.js* from its archives.
+
+```javascript
+cd ~
+curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
+```
+
+You can inspect the contents of this script with vim or your preferred text editor:
+
+```javascript
+vim nodesource_setup.sh
+```
+
+The PPA will be added to your configuration and your local package cache will be updated automatically. After running the setup script from Nodesource, you can install the Node.js package:
+
+```javascript
+sudo apt install nodejs
+```
+
+To check which version of Node.js you have installed after these initial steps, type:
+
+```javascript
+node -v
+```
+
+> Note: When installing from the NodeSource PPA, the Node.js executable is called nodejs, rather than node.
+
+The *nodejs* package contains the *nodejs* binary as well as *npm*, a package manager for Node modules, so you don’t need to install *npm* separately.
+
+*npm* uses a configuration file in your home directory to keep track of updates. It will be created the first time you run *npm*. Execute this command to verify that *npm* is installed and to create the configuration file:
+
+```javascript
+npm -v
+```
+
