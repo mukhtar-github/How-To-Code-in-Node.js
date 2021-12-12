@@ -65,3 +65,68 @@ Then, install the *request* library:
 ```javascript
 npm i request --save
 ```
+
+Now open a new file called *callbackMovies.js* in a text editor like vim:
+
+```javascript
+vim callbackMovies.js
+```
+
+In your text editor, enter the following code. Let’s begin by sending an *HTTP request* with the *request module*:
+
+```javascript
+const request = require('request');
+
+request('https://ghibliapi.herokuapp.com/films');
+```
+
+In the first line, we load the *request module* that was installed via *npm*. The module returns a function that can make *HTTP requests*; we then save that function in the *request constant*.
+
+We then make the *HTTP request* using the *request()* function. Let’s now print the data from the *HTTP request* to the console by adding the highlighted changes:
+
+```javascript
+const request = require('request');
+
+request('https://ghibliapi.herokuapp.com/films', (error, response, body) => {
+    if (error) {
+        console.error(`Could not send request to API: ${error.message}`);
+        return;
+    }
+
+    if (response.statusCode != 200) {
+        console.error(`Expected status code 200 but received ${response.statusCode}.`);
+        return;
+    }
+
+    console.log('Processing our list of movies');
+    movies = JSON.parse(body);
+    movies.forEach(movie => {
+        console.log(`${movie['title']}, ${movie['release_date']}`);
+    });
+});
+```
+
+When we use the *request()* function, we give it two parameters:
+
+* The *URL* of the website we are trying to *request*
+* A *callback function* that handles any *errors or successful responses* after the *request* is complete
+
+Our *callback function* has three *arguments*: *error, response, and body*. When the *HTTP request* is complete, the *arguments* are automatically given values depending on the outcome. If the request *failed to send, then error would contain an object*, but *response and body* would be null. If it made the *request successfully*, then the *HTTP response* is stored in *response*. If our *HTTP response* returns data (in this example we get JSON) then the data is set in body.
+
+Our *callback function* first checks to see if we received an *error*. It’s best practice to check for *errors* in a *callback* first, so the execution of the *callback* won’t continue with *missing data*. In this case, we *log the error and the function’s execution*. We then check the *status code of the response*. Our *server* may not always be available, and *APIs* can change *causing once sensible requests to become incorrect*. By checking that the *status code is 200*, which means the request was “OK”, we can have confidence that our response is what we expect it to be.
+
+Finally, we *parse the response body to an Array and loop through each movie to log its name and release year*.
+
+After saving and quitting the file, run this script with:
+
+```javascript
+cd ghibliMovies
+```
+
+
+
+
+
+
+
+
