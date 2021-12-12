@@ -98,4 +98,73 @@ server.listen(port, hostname, () => {
 });
 ```
 
+This *Node.js* application listens on the specified address *(localhost)* and port *(3000)*, and returns *“Hello World!”* with a *200 HTTP* success code. Since we’re listening on *localhost*, remote clients won’t be able to connect to our application.
+
+To test your application, type:
+
+```javascript
+node hello.js
+```
+
+You will receive the following output:
+
+```javascript
+Output
+Server running at http://localhost:3000/
+```
+
+> Note: Running a *Node.js* application in this manner will block additional commands until the application is killed by pressing *CTRL+C*.
+
+To test the application, open another terminal session on your server, and connect to *localhost* with *curl*:
+
+```javascript
+curl http://localhost:3000
+```
+
+If you get the following output, the application is working properly and listening on the correct address and port:
+
+```javascript
+Output
+Hello World!
+```
+
+If you do not get the expected output, make sure that your *Node.js* application is running and configured to listen on the proper address and port.
+
+## Step 3 — Installing PM2
+
+Next let’s install *PM2*, a process manager for Node.js applications. *PM2* makes it possible to daemonize applications so that they will run in the background as a service.
+
+Use *npm* to install the latest version of *PM2* on your server:
+
+```javascript
+sudo npm install pm2@latest -g
+```
+
+The *-g* option tells *npm* to install the module *globally*, so that it’s available system-wide.
+
+Let’s first use the *pm2 start* command to run your application, *hello.js*, in the background:
+
+```javascript
+pm2 start hello.js
+```
+
+This also adds your application to *PM2*’s process list, which is outputted every time you start an application:
+
+```javascript
+Output
+...
+[PM2] Spawning PM2 daemon with pm2_home=/home/sammy/.pm2
+[PM2] PM2 Successfully daemonized
+[PM2] Starting /home/sammy/hello.js in fork_mode (1 instance)
+[PM2] Done.
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
+│ 0  │ hello              │ fork     │ 0    │ online    │ 0%       │ 25.2mb   │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+```
+
+As indicated above, PM2 automatically assigns an App name (based on the filename, without the .js extension) and a PM2 id. PM2 also maintains other information, such as the PID of the process, its current status, and memory usage.
+
+Applications that are running under PM2 will be restarted automatically if the application crashes or is killed, but we can take an additional step to get the application to launch on system startup using the startup subcommand. This subcommand generates and configures a startup script to launch PM2 and its managed processes on server boots:
 
