@@ -244,4 +244,72 @@ The *PM2* process monitor can be pulled up with the *monit* subcommand. This dis
 pm2 monit
 ```
 
+Note that running *pm2* without any arguments will also display a help page with example usage.
 
+Now that your *Node.js* application is running and managed by *PM2*, let’s set up the *reverse proxy*.
+
+## Step 4 — Setting Up Nginx as a Reverse Proxy Server
+
+Your application is running and listening on *localhost*, but you need to set up a way for your users to access it. We will set up the *Nginx web server as a reverse proxy* for this purpose.
+
+In the prerequisite tutorial, you set up your *Nginx configuration* in the */etc/nginx/sites-available/example.com* file. Open this file for editing:
+
+```javascript
+sudo vim /etc/nginx/sites-available/example.com
+```
+
+Within the *server block*, you should have an existing *location / block*. Replace the contents of that block with the following configuration. If your application is set to listen on a different port, update the highlighted portion to the correct port number:
+
+```javascript
+server {
+...
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+...
+}
+```
+
+This configures the server to respond to requests at its *root*. Assuming our server is available at *example.com*, accessing *<https://example.com/>* via a web browser would send the request to *hello.js*, listening on port *3000* at *localhost*.
+
+You can add additional *location blocks* to the same server block to provide access to other applications on the same server. For example, if you were also running another *Node.js* application on *port 3001*, you could add this *location block* to allow access to it via *<https://example.com/app2>*:
+
+```javascript
+server {
+...
+    location /app2 {
+        proxy_pass http://localhost:3001;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+...
+}
+```
+
+Once you are done adding the location blocks for your applications, save the file and exit your editor.
+
+Make sure you didn’t introduce any syntax errors by typing:
+
+```javascript
+sudo nginx -t
+```
+
+Restart Nginx:
+
+```javascript
+sudo systemctl restart nginx
+```
+
+Assuming that your *Node.js* application is running, and your application and *Nginx* configurations are correct, you should now be able to access your application via the *Nginx* reverse proxy. Try it out by accessing your server’s URL (its public IP address or domain name).
+
+## Conclusion
+
+Congratulations! You now have your *Node.js* application running behind an *Nginx* reverse proxy on an Ubuntu 20.04 server. This reverse proxy setup is flexible enough to provide your users access to other applications or static web content that you want to share.
