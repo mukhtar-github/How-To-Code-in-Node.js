@@ -52,14 +52,16 @@ Then enter that folder:
 cd ghibliMovies
 ```
 
-We will start by making an *HTTP* request to the *Studio Ghibli API*, which our *callback function* will log the results of. To do this, we will install a library that allows us to access the data of an *HTTP response in a callback*.
+We will start by making an *HTTP request* to the *Studio Ghibli API*, which our *callback function will log the results of*. To do this, we will install a library that allows us to access the data of an *HTTP response in a callback*.
 
-In your terminal, initialize npm so we can have a reference for our packages later:
+In your terminal, initialize *npm* so we can have a *reference for our packages* later:
 
 ```javascript
 npm init -y
 ```
 
+Then, install the *request* library:
 
-
-
+```javascript
+npm i request --save
+```
