@@ -20,6 +20,27 @@ Let’s illustrate with an example using the *call stack.* If *JavaScript* encou
 
 When *JavaScript* encounters an *asynchronous operation*, like writing to a file, it adds it to a table in its memory. This table stores the operation, the condition for it to be completed, and the function to be called when it’s completed. As the operation completes, *JavaScript* adds the associated function to the *message queue*. A *queue* is another *list-like data structure* where items can only be *added to the bottom but removed from the top*. In the *message queue*, if two or more *asynchronous operation*s are ready for their functions to be executed, the *asynchronous operation* that was completed first will have its function marked for execution first.
 
-Functions in the *message queue* are waiting to be added to the *call stack.* The *event loop* is a perpetual process that checks if the *call stack* is empty. If it is, then the first item in the *message queue* is moved to the *call stack*. *JavaScript* prioritizes functions in the *message queue* over function calls it interprets in the code. The combined effect of the *call stack*, *message queue*, and *event loop* allows *JavaScript* code to be processed while managing asynchronous activities.
+> Functions in the *message queue* are waiting to be added to the *call stack.* The *event loop* is a perpetual process that checks if the *call stack* is empty. If it is, then the first item in the *message queue* is moved to the *call stack*. *JavaScript* prioritizes functions in the *message queue* over function calls it interprets in the code. The combined effect of the *call stack*, *message queue*, and *event loop* allows *JavaScript* code to be processed while managing *asynchronous activities*.
 
-Now that you have a high-level understanding of the *event loop*, you know how the asynchronous code you write will be executed. With this knowledge, you can now create asynchronous code with three different approaches: callbacks, promises, and async/await.
+Now that you have a high-level understanding of the *event loop*, you know how the *asynchronous code* you write will be executed. With this knowledge, you can now create *asynchronous code* with three different approaches: *callbacks, promises, and async/await*.
+
+## Asynchronous Programming with Callbacks
+
+A *callback function* is one that is passed as an *argument* to another function, and then executed when the other function is finished. We use *callbacks* to ensure that code is executed only after an *asynchronous operation* is completed.
+
+For a long time, *callbacks* were the most common mechanism for writing *asynchronous code*, but now they have largely become obsolete because they can make code confusing to read. In this step, you’ll write an example of *asynchronous code* using *callbacks* so that you can use it as a baseline to see the increased efficiency of other strategies.
+
+There are many ways to use *callback function*s in another function. Generally, they take this structure:
+
+```javascript
+function asynchronousFunction([ Function Arguments ], [ Callback Function ]) {
+    [ Action ]
+}
+```
+
+While it is not syntactically required by *JavaScript* or *Node.js* to have the *callback function* as the last *argument* of the outer function, it is a common practice that makes *callbacks* easier to identify. It’s also common for *JavaScript developers* to use *an anonymous function as a callback. Anonymous functions are those created without a name*. It’s usually much more readable when a function is defined at the end of the *argument* list.
+
+To demonstrate *callbacks*, let’s create a *Node.js* module that writes a list of *Studio Ghibli movies* to a file. First, create a folder that will store our *JavaScript file and its output*:
+
+
+
