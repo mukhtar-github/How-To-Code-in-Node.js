@@ -58,3 +58,44 @@ The *nodejs* package contains the *nodejs* binary as well as *npm*, a package ma
 npm -v
 ```
 
+In order for some *npm* packages to work (those that require compiling code from source, for example), you will need to install the *build-essential* package:
+
+```javascript
+sudo apt install build-essential
+```
+
+You now have the necessary tools to work with *npm* packages that require compiling code from source.
+
+With the Node.js runtime installed, let’s move on to writing a *Node.js* application.
+
+## Step 2 — Creating a Node.js Application
+
+Let’s write a *Hello World* application that returns “*Hello World*” to any *HTTP* requests. This sample application will help you get *Node.js* set up. You can replace it with your *own application* — just make sure that you modify your application to listen on the appropriate *IP addresses and ports*.
+
+First, let’s create a sample application called *hello.js*:
+
+```javascript
+cd ~
+vim hello.js
+```
+
+Insert the following code into the file:
+
+```javascript
+const http = require('http');
+
+const hostname = 'localhost';
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World!\n');
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+```
+
+
