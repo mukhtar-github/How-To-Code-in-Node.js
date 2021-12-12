@@ -201,7 +201,7 @@ Processing our list of movies
 Saved our list of movies to callbackMovies.csv
 ```
 
-In your ghibliMovies folder, you will see callbackMovies.csv, which has the following content:
+In your *ghibliMovies* folder, you will see *callbackMovies.csv*, which has the following content:
 
 ```javascript
 callbackMovies.csv
