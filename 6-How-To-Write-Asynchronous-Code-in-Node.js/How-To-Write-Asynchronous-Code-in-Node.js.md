@@ -42,5 +42,24 @@ While it is not syntactically required by *JavaScript* or *Node.js* to have the 
 
 To demonstrate *callbacks*, let’s create a *Node.js* module that writes a list of *Studio Ghibli movies* to a file. First, create a folder that will store our *JavaScript file and its output*:
 
+```javascript
+mkdir ghibliMovies
+```
+
+Then enter that folder:
+
+```javascript
+cd ghibliMovies
+```
+
+We will start by making an *HTTP* request to the *Studio Ghibli API*, which our *callback function* will log the results of. To do this, we will install a library that allows us to access the data of an *HTTP response in a callback*.
+
+In your terminal, initialize npm so we can have a reference for our packages later:
+
+```javascript
+npm init -y
+```
+
+
 
 
