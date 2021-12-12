@@ -150,7 +150,42 @@ When Marnie Was There, 2014
 The Red Turtle, 2016
 ```
 
+We successfully received a list of *Studio Ghibli movies with the year* they were released. Now let’s complete this program by writing the *movie list we are currently logging* into a file.
 
+Update the *callbackMovies.js* file in your text editor to include the following highlighted code, which creates a *CSV* file with our *movie data*:
+
+```javascript
+const request = require('request');
+const fs = require('fs');
+
+request('https://ghibliapi.herokuapp.com/films', (error, response, body) => {
+    if (error) {
+        console.error(`Could not send request to API: ${error.message}`);
+        return;
+    }
+
+    if (response.statusCode != 200) {
+        console.error(`Expected status code 200 but received ${response.statusCode}.`);
+        return;
+    }
+
+    console.log('Processing our list of movies');
+    movies = JSON.parse(body);
+    let movieList = '';
+    movies.forEach(movie => {
+        movieList += `${movie['title']}, ${movie['release_date']}\n`;
+    });
+
+    fs.writeFile('callbackMovies.csv', movieList, (error) => {
+        if (error) {
+            console.error(`Could not save the Ghibli movies to a file: ${error}`);
+            return;
+        }
+
+        console.log('Saved our list of movies to callbackMovies.csv');;
+    });
+});
+```
 
 
 

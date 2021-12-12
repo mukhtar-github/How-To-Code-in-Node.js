@@ -1,4 +1,5 @@
 const request = require('request');
+const fs = require('fs');
 
 request('https://ghibliapi.herokuapp.com/films', (error, response, body) => {
     if (error) {
@@ -13,7 +14,17 @@ request('https://ghibliapi.herokuapp.com/films', (error, response, body) => {
 
     console.log('Processing our list of movies');
     movies = JSON.parse(body);
+    let movieList = '';
     movies.forEach(movie => {
-        console.log(`${movie['title']}, ${movie['release_date']}`);
+        movieList += `${movie['title']}, ${movie['release_date']}\n`;
+    });
+
+    fs.writeFile('callbackMovies.csv', movieList, (error) => {
+        if (error) {
+            console.error(`Could not save the Ghibli movies to a file: ${error}`);
+            return;
+        }
+
+        console.log('Saved our list of movies to callbackMovies.csv');;
     });
 });
