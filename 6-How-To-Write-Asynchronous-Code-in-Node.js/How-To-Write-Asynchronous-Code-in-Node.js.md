@@ -120,11 +120,35 @@ Finally, we *parse the response body to an Array and loop through each movie to 
 After saving and quitting the file, run this script with:
 
 ```javascript
-cd ghibliMovies
+node callbackMovies.js
 ```
 
+You will get the following output:
 
-
+```javascript
+Processing our list of movies
+Castle in the Sky, 1986
+Grave of the Fireflies, 1988
+My Neighbor Totoro, 1988
+Kiki's Delivery Service, 1989
+Only Yesterday, 1991
+Porco Rosso, 1992
+Pom Poko, 1994
+Whisper of the Heart, 1995
+Princess Mononoke, 1997
+My Neighbors the Yamadas, 1999
+Spirited Away, 2001
+The Cat Returns, 2002
+Howl's Moving Castle, 2004
+Tales from Earthsea, 2006
+Ponyo, 2008
+Arrietty, 2010
+From Up on Poppy Hill, 2011
+The Wind Rises, 2013
+The Tale of the Princess Kaguya, 2013
+When Marnie Was There, 2014
+The Red Turtle, 2016
+```
 
 
 
