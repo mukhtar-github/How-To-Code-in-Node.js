@@ -187,5 +187,47 @@ request('https://ghibliapi.herokuapp.com/films', (error, response, body) => {
 });
 ```
 
+Noting the highlighted changes, we see that we import the *fs module*. This module is standard in all *Node.js* installations, and it contains a *writeFile()* method that can *asynchronously write to a file*.
+
+Instead of *logging the data to the console*, we now add it to a string variable *movieList*. We then use *writeFile()* to save the contents of *movieList* to a new file—*callbackMovies.csv*. Finally, we provide a *callback* to the *writeFile()* function, which has one *argument: error*. This allows us to handle cases where we are not able to *write to a file*, for example when *the user we are running the node process on does not have those permissions*.
+
+Save the file and run this *Node.js* program once again with:
+
+```javascript
+node callbackMovies.js
+
+// output
+Processing our list of movies
+Saved our list of movies to callbackMovies.csv
+```
+
+In your ghibliMovies folder, you will see callbackMovies.csv, which has the following content:
+
+```javascript
+callbackMovies.csv
+
+Castle in the Sky, 1986
+Grave of the Fireflies, 1988
+My Neighbor Totoro, 1988
+Kiki's Delivery Service, 1989
+Only Yesterday, 1991
+Porco Rosso, 1992
+Pom Poko, 1994
+Whisper of the Heart, 1995
+Princess Mononoke, 1997
+My Neighbors the Yamadas, 1999
+Spirited Away, 2001
+The Cat Returns, 2002
+Howl's Moving Castle, 2004
+Tales from Earthsea, 2006
+Ponyo, 2008
+Arrietty, 2010
+From Up on Poppy Hill, 2011
+The Wind Rises, 2013
+The Tale of the Princess Kaguya, 2013
+When Marnie Was There, 2014
+The Red Turtle, 2016
+```
+
 
 
