@@ -229,5 +229,22 @@ When Marnie Was There, 2014
 The Red Turtle, 2016
 ```
 
+It’s important to note that we write to our *CSV* file in the *callback of the HTTP request*. Once the code is in the *callback function*, it will only write to the file after the *HTTP request* was completed. If we wanted to communicate to a database after we wrote our *CSV* file, we would make another *asynchronous* function that would be called in the *callback of writeFile()*. The more *asynchronous* code we have, the more *callback functions* have to be nested.
 
+Let’s imagine that we want to execute five *asynchronous* operations, each one only able to run when another is complete. If we were to code this, we would have something like this:
 
+```javascript
+doSomething1(() => {
+    doSomething2(() => {
+        doSomething3(() => {
+            doSomething4(() => {
+                doSomething5(() => {
+                    // final action
+                });
+            });
+        });
+    });
+});
+```
+
+When nested callbacks have many lines of code to execute, they become substantially more complex and unreadable. As your *JavaScript project* grows in size and complexity, this effect will become more pronounced, until it is eventually unmanageable. Because of this, *developers no longer use callbacks to handle asynchronous operations*. To improve the syntax of our *asynchronous code*, we can use *promises* instead.
