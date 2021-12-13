@@ -1,4 +1,5 @@
-File & Directory Commands
+# File & Directory Commands
+
 To navigate into the root directory, use "cd /"
 To navigate to your home directory, use "cd" or "cd ~"
 To navigate up one directory level, use "cd .."
@@ -15,21 +16,19 @@ Are you sure you want to continue connecting (yes/no)?)
 that will open a shell as the superuser. Type (exit or Ctrl - D) to exit this shell.*
 > sudo vim /etc/ssh/sshd_config
 > vagrant ssh root-psswd -- 0759@vm
-
 > Step 2 — Creating a New User
 
-# adduser mtg
+## adduser mtg
 
 > Enter a strong password -- 0759@vmuser
-
 > Step 3 — Granting Administrative Privileges
 
-# usermod -aG sudo mtg
+## usermod -aG sudo mtg
 
 > Step 4 — Setting Up a Basic Firewall
 Run the following command to get a list of all current available profiles:
 
-# ufw app list
+## ufw app list
 
 // Output
 Available applications:
@@ -37,15 +36,15 @@ Available applications:
 You need to make sure that the firewall allows SSH connections so that you can log back in next time.
 You can allow these connections by typing:
 
-# ufw allow OpenSSH
+## ufw allow OpenSSH
 
 Afterwards, you can enable the firewall with:
 
-# ufw enable
+## ufw enable
 
 Type “y” and press ENTER to proceed. You can see that SSH connections are still allowed by typing:
 
-# ufw status
+## ufw status
 
 As the firewall is currently blocking all connections except for SSH, if you install and configure additional services,
 you will need to adjust the firewall settings to allow acceptable traffic in.
@@ -233,10 +232,6 @@ $ sudo systemctl restart nginx
 
 Nginx should now be serving your domain name. You can test this by navigating to <http://mymtg.live>,
 where you should see something like the following:
-
-curl -4 127.0.0.1
-
-sudo vim /etc/hosts
 
 > Step 6 – Getting Familiar with Important Nginx Files and Directories
 Now that you know how to manage the Nginx service itself, you should take a few minutes to familiarize yourself
@@ -462,3 +457,12 @@ sudo systemctl restart nginx
 Congratulations! You now have your Node.js application running behind an Nginx reverse proxy on an Ubuntu 20.04 server.
 This reverse proxy setup is flexible enough to provide your users access to other applications or static web content
 that you want to share.
+
+***curl -4 127.0.0.1
+ssh root@46.101.63.136
+sudo vim $HOME/.ssh/authorized_keys
+sudo vim /etc/hosts
+ssh-copy-id root@46.101.63.136
+Run (ssh-add) on the client machine, that will add the (SSH key) to the agent.
+Confirm with (ssh-add -l) again on the client that it was indeed added.
+ssh-copy-id mtg@46.101.63.136
