@@ -328,3 +328,36 @@ axios.get('https://ghibliapi.herokuapp.com/films')
         console.log('Saved our list of movies to promiseMovies.csv');
     })
 ```
+
+We additionally import the *fs module* once again. Note how after the *fs* import we have *.promises*. *Node.js* includes a *promised-based* version of the *callback-based fs library*, so backward compatibility is not broken in legacy projects.
+
+The first *then()* function that processes the *HTTP request* now calls *fs.writeFile()* instead of printing to the console. Since we imported the *promise-based* version of *fs*, our *writeFile()* function returns another *promise*. As such, we append another *then()* function for when the *writeFile() promise* is fulfilled.
+
+A *promise* can return a new *promise*, allowing us to execute *promises* one after the other. This paves the way for us to perform multiple *asynchronous operations*. This is called *promise chaining*, and it is analogous to nesting *callbacks*. The second *then()* is only called after we successfully write to the file.
+
+> Note: In this example, we did not check for the *HTTP* status code like we did in the *callback* example. By default, *axios* does not fulfil its *promise* if it gets a status code indicating an *error*. As such, we no longer need to validate it.
+
+To complete this program, chain the *promise* with a *catch()* function as it is highlighted in the following:
+
+```javascript
+const axios = require('axios');
+const fs = require('fs').promises;
+
+
+axios.get('https://ghibliapi.herokuapp.com/films')
+    .then((response) => {
+        console.log('Successfully retrieved our list of movies');
+        let movieList = '';
+        response.data.forEach(movie => {
+            movieList += `${movie['title']}, ${movie['release_date']}\n`;
+        });
+
+        return fs.writeFile('promiseMovies.csv', movieList);
+    })
+    .then(() => {
+        console.log('Saved our list of movies to promiseMovies.csv');
+    })
+    .catch((error) => {
+        console.error(`Could not save the Ghibli movies to a file: ${error}`);
+    });
+```
