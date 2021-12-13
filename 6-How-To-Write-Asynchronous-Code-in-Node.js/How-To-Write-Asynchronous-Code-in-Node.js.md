@@ -371,6 +371,7 @@ node promiseMovies.js
 ```
 
 ```javascript
+// Output
 Successfully retrieved our list of movies
 Saved our list of movies to promiseMovies.csv
 ```
@@ -408,3 +409,73 @@ With *promises*, we can write much more concise code than using only *callbacks*
 
 The verbosity of *callbacks and promises* come from the need to create functions when we have the result of an *asynchronous task*. A better experience would be to *wait* for an *asynchronous result* and put it in a variable outside the function. That way, we can use *the results in the variables* without having to make a function. We can achieve this with the *async and await* keywords.
 
+## Writing JavaScript with async/await
+
+The *async/await* keywords provide an alternative syntax when working with *promises*. Instead of having the result of a *promise* available in the *then()* method, the result is returned as a *value* like in any other function. We define a function with the *async* keyword to tell JavaScript that it’s an *asynchronous function* that returns a *promise*. We use the *await* keyword to tell JavaScript to return the results of the *promise* instead of returning the *promise* itself when it’s fulfilled.
+
+In general, *async/await* usage looks like this:
+
+```javascript
+async function() {
+    await [Asynchronous Action]
+}
+```
+
+Let’s see how using *async/await* can improve our *Studio Ghibli* program. Use your text editor to create and open a new file *asyncAwaitMovies.js*:
+
+```javascript
+vim asyncAwaitMovies.js
+```
+
+In your newly opened JavaScript file, let’s start by importing the same *modules* we used in our *promise* example:
+
+```javascript
+const axios = require('axios');
+const fs = require('fs').promises;
+```
+
+The imports are the same as *promiseMovies.js* because *async/await* uses *promises*.
+
+Now we use the *async* keyword to create a function with our *asynchronous code*:
+
+```javascript
+const axios = require('axios');
+const fs = require('fs').promises;
+
+async function saveMovies() {}
+```
+
+We create a new function called *saveMovies()* but we include *async* at the beginning of its definition. This is important as we can only use the *await* keyword in an *asynchronous function*.
+
+Use the *await* keyword to make an *HTTP request* that gets the list of *movies* from the *Ghibli API*:
+
+```javascript
+const axios = require('axios');
+const fs = require('fs').promises;
+
+async function saveMovies() {
+    let response = await axios.get('https://ghibliapi.herokuapp.com/films');
+    let movieList = '';
+    response.data.forEach(movie => {
+        movieList += `${movie['title']}, ${movie['release_date']}\n`;
+    });
+}
+```
+
+In our *saveMovies()* function, we make an *HTTP request* with *axios.get()* like before. This time, we don’t chain it with a *then()* function. Instead, we add *await* before it is called. When JavaScript sees *await*, it will only execute the remaining code of the function after *axios.get()* finishes execution and sets the *response* variable. The other code saves the *movie data* so we can write to a file.
+
+Let’s write the *movie data* to a file:
+
+```javascript
+const axios = require('axios');
+const fs = require('fs').promises;
+
+async function saveMovies() {
+    let response = await axios.get('https://ghibliapi.herokuapp.com/films');
+    let movieList = '';
+    response.data.forEach(movie => {
+        movieList += `${movie['title']}, ${movie['release_date']}\n`;
+    });
+    await fs.writeFile('asyncAwaitMovies.csv', movieList);
+}
+```
