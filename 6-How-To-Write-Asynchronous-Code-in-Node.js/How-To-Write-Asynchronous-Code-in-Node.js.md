@@ -403,3 +403,8 @@ When Marnie Was There, 2014
 The Red Turtle, 2016
 
 ```
+
+With *promises*, we can write much more concise code than using only *callbacks*. The *promise chain* of *callbacks* is a cleaner option than nesting *callbacks*. However, as we make more *asynchronous calls*, our *promise chain* becomes longer and harder to maintain.
+
+The verbosity of *callbacks and promises* come from the need to create functions when we have the result of an *asynchronous task*. A better experience would be to *wait* for an *asynchronous result* and put it in a variable outside the function. That way, we can use *the results in the variables* without having to make a function. We can achieve this with the *async and await* keywords.
+
