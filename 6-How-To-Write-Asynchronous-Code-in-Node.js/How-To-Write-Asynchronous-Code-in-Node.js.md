@@ -361,3 +361,11 @@ axios.get('https://ghibliapi.herokuapp.com/films')
         console.error(`Could not save the Ghibli movies to a file: ${error}`);
     });
 ```
+
+If any *promise* is not fulfilled in the *chain of promises*, JavaScript automatically goes to the *catch()* function if it was defined. That’s why we only have one *catch()* clause even though we have two asynchronous operations.
+
+Let’s confirm that our program produces the same output by running:
+
+```javascript
+node promiseMovies.js
+```
