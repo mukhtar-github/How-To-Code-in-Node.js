@@ -248,3 +248,26 @@ doSomething1(() => {
 ```
 
 When nested callbacks have many lines of code to execute, they become substantially more complex and unreadable. As your *JavaScript project* grows in size and complexity, this effect will become more pronounced, until it is eventually unmanageable. Because of this, *developers no longer use callbacks to handle asynchronous operations*. To improve the syntax of our *asynchronous code*, we can use *promises* instead.
+
+## Using Promises for Concise Asynchronous Programming
+
+A *promise* is a *JavaScript object that will return a value at some point in the future*. *Asynchronous functions* can return *promise objects* instead of *concrete values*. If we get a *value* in the future, we say that the *promise* was fulfilled. If we get an *error* in the future, we say that the *promise* was rejected. Otherwise, the *promise* is still being worked on in a *pending state*.
+
+*Promises* generally take the following form:
+
+```javascript
+promiseFunction()
+    .then([ Callback Function for Fulfilled Promise ])
+    .catch([ Callback Function for Rejected Promise ])
+```
+
+As shown in this template, *promises* also use *callback functions*. We have a *callback function for the then() method*, which is executed when a *promise* is fulfilled. We also have a *callback function for the catch() method* to handle any *errors* that come up while the *promise* is being executed.
+
+Let’s get firsthand experience with *promises* by rewriting our *Studio Ghibli* program to use *promises* instead.
+
+*Axios* is a *promise-based HTTP client for JavaScript*, so let’s go ahead and install it:
+
+```javascript
+npm i axios --save
+```
+
