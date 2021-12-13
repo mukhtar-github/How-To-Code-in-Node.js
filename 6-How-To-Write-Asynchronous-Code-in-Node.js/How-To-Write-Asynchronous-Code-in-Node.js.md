@@ -369,3 +369,14 @@ Let’s confirm that our program produces the same output by running:
 ```javascript
 node promiseMovies.js
 ```
+
+```javascript
+Successfully retrieved our list of movies
+Saved our list of movies to promiseMovies.csv
+```
+
+In your *ghibliMovies* folder, you will see the promiseMovies.csv file containing:
+
+```javascript
+node promiseMovies.js
+```
