@@ -479,3 +479,8 @@ async function saveMovies() {
     await fs.writeFile('asyncAwaitMovies.csv', movieList);
 }
 ```
+
+We also use the await keyword when we write to the file with fs.writeFile().
+
+To complete this function, we need to catch errors our promises can throw. Let’s do this by encapsulating our code in a try/catch block:
+
