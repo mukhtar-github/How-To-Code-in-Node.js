@@ -271,3 +271,60 @@ Let’s get firsthand experience with *promises* by rewriting our *Studio Ghibli
 npm i axios --save
 ```
 
+Now, with your text editor of choice, create a new file *promiseMovies.js*:
+
+```javascript
+vim promiseMovies.js
+```
+
+Our program will make an *HTTP request* with *axios* and then use a *special promised-based version of fs to save to a new CSV file*.
+
+Type this code in *promiseMovies.js* so we can load *Axios* and send an *HTTP request* to the *movie API*:
+
+```javascript
+const axios = require('axios');
+
+axios.get('https://ghibliapi.herokuapp.com/films');
+```
+
+In the first line we load the *axios module*, storing the returned function in a constant called *axios*. We then use the *axios.get() method* to send an *HTTP request* to the *API*.
+
+The *axios.get() method* returns a *promise*. Let’s chain that *promise* so we can print the list of *Ghibli movies* to the console:
+
+```javascript
+const axios = require('axios');
+const fs = require('fs').promises;
+
+
+axios.get('https://ghibliapi.herokuapp.com/films')
+    .then((response) => {
+        console.log('Successfully retrieved our list of movies');
+        response.data.forEach(movie => {
+            console.log(`${movie['title']}, ${movie['release_date']}`);
+        });
+    })
+```
+
+Let’s break down what’s happening. After making an *HTTP GET request with axios.get()*, we use the *then() function*, which is only executed when the *promise* is fulfilled. In this case, we print the *movies* to the screen like we did in the *callbacks* example.
+
+To improve this program, add the highlighted code to *write the HTTP data to a file*:
+
+```javascript
+const axios = require('axios');
+const fs = require('fs').promises;
+
+
+axios.get('https://ghibliapi.herokuapp.com/films')
+    .then((response) => {
+        console.log('Successfully retrieved our list of movies');
+        let movieList = '';
+        response.data.forEach(movie => {
+            movieList += `${movie['title']}, ${movie['release_date']}\n`;
+        });
+
+        return fs.writeFile('promiseMovies.csv', movieList);
+    })
+    .then(() => {
+        console.log('Saved our list of movies to promiseMovies.csv');
+    })
+```
