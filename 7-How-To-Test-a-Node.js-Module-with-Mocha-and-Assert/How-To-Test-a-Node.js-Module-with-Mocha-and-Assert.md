@@ -29,3 +29,11 @@ Now initialize *npm*, since we’ll be using its *CLI* functionality to run the 
 ```javascript
 npm init -y
 ```
+
+We only have one dependency, *Mocha*, which we will use to organize and run our tests. To download and install *Mocha*, use the following:
+
+```javascript
+npm i request --save-dev mocha
+```
+
+We install *Mocha* as a *dev* dependency, as it’s not required by the module in a production setting. If you would like to learn more about *Node.js packages or npm*, check out our guide on *How To Use Node.js Modules with npm and package.json*.
