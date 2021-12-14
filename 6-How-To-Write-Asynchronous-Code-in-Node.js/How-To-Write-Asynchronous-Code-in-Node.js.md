@@ -480,7 +480,56 @@ async function saveMovies() {
 }
 ```
 
-We also use the await keyword when we write to the file with fs.writeFile().
+We also use the *await* keyword when we write to the file with *fs.writeFile()*.
 
-To complete this function, we need to catch errors our promises can throw. Let’s do this by encapsulating our code in a try/catch block:
+To complete this function, we need to *catch errors our promises can throw*. Let’s do this by *encapsulating our code in a try/catch block*:
 
+```javascript
+const axios = require('axios');
+const fs = require('fs').promises;
+
+async function saveMovies() {
+    try {
+        let response = await axios.get('https://ghibliapi.herokuapp.com/films');
+        let movieList = '';
+        response.data.forEach(movie => {
+            movieList += `${movie['title']}, ${movie['release_date']}\n`;
+        });
+        await fs.writeFile('asyncAwaitMovies.csv', movieList);
+    } catch (error) {
+        console.error(`Could not save the Ghibli movies to a file: ${error}`);
+    }
+}
+```
+
+Since *promises* can fail, we encase our *asynchronous code with a try/catch clause*. This will capture any *errors* that are thrown when either the *HTTP request or file writing operations fail*.
+
+Finally, let’s *call our asynchronous function saveMovies()* so it will be executed when we run the program with *node*
+
+```javascript
+const axios = require('axios');
+const fs = require('fs').promises;
+
+async function saveMovies() {
+    try {
+        let response = await axios.get('https://ghibliapi.herokuapp.com/films');
+        let movieList = '';
+        response.data.forEach(movie => {
+            movieList += `${movie['title']}, ${movie['release_date']}\n`;
+        });
+        await fs.writeFile('asyncAwaitMovies.csv', movieList);
+    } catch (error) {
+        console.error(`Could not save the Ghibli movies to a file: ${error}`);
+    }
+}
+
+saveMovies();
+```
+
+At a glance, this looks like a typical *synchronous JavaScript* code block. It has fewer functions being passed around, which looks a bit neater. These small tweaks make *asynchronous code* with *async/await* easier to maintain.
+
+Test this iteration of our program by entering this in your terminal:
+
+```javascript
+node asyncAwaitMovies.js
+```
