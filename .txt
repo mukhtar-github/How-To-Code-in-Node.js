@@ -466,3 +466,4 @@ ssh-copy-id root@46.101.63.136
 Run (ssh-add) on the client machine, that will add the (SSH key) to the agent.
 Confirm with (ssh-add -l) again on the client that it was indeed added.
 ssh-copy-id mtg@46.101.63.136
+ssh mtg@46.101.63.136
