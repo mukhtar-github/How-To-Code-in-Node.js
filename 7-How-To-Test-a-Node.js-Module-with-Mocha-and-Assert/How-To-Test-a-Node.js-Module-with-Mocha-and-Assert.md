@@ -7,3 +7,25 @@ Testing is an integral part of software development. It’s common for programme
 A test framework structures the way we create test cases. *Mocha* is a popular JavaScript test framework that organizes our test cases and runs them for us. However, *Mocha* does not verify our code’s behavior. To compare values in a test, we can use the *Node.js assert* module.
 
 In this article, you’ll write tests for a *Node.js TODO #1 list* module. You will set up and use the *Mocha test* framework to structure your tests. Then you’ll use the *Node.js assert* module to create the tests themselves. In this sense, you will be using *Mocha as a plan builder, and assert to implement the plan*.
+
+## Step 1 — Writing a Node Module
+
+Let’s begin this article by writing the *Node.js module* we’d like to test. This module will manage a *list of TODO items*. Using this module, we will be able to list all the *TODOs* that we are keeping track of, add new items, and mark some as complete. Additionally, we’ll be able to export a *list of TODO items* to a *CSV* file. If you’d like a refresher on writing *Node.js modules*, you can read our article on *How To Create a Node.js Module*.
+
+First, we need to set up the coding environment. Create a folder with the name of your project in your terminal. This tutorial will use the name *todos*:
+
+```javascript
+mkdir todos
+```
+
+Then enter that folder:
+
+```javascript
+cd todos
+```
+
+Now initialize *npm*, since we’ll be using its *CLI* functionality to run the tests later:
+
+```javascript
+npm init -y
+```
