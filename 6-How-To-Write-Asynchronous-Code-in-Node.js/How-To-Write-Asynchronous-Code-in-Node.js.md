@@ -560,5 +560,12 @@ The Wind Rises, 2013
 The Tale of the Princess Kaguya, 2013
 When Marnie Was There, 2014
 The Red Turtle, 2016
-
 ```
+
+You have now used the JavaScript features *async/await* to manage *asynchronous code*.
+
+## Conclusion
+
+In this tutorial, you learned how JavaScript handles executing functions and managing *asynchronous operations* with the *event loop*. You then wrote programs that created a *CSV* file after making an *HTTP request* for *movie data* using various *asynchronous programming techniques*. First, you used the obsolete *callback-based* approach. You then used *promises*, and finally *async/await* to make the *promise* syntax more succinct.
+
+With your understanding of *asynchronous code with Node.js*, you can now develop programs that benefit from *asynchronous programming*, like those that rely on *API calls*. Have a look at this list of *public APIs*. To use them, you will have to make asynchronous HTTP requests like we did in this tutorial. For further study, try building an app that uses these APIs to practice the techniques you learned here.
