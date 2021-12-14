@@ -53,8 +53,35 @@ vim index.js
 Let’s begin by defining the *Todos class*. This class contains all the functions that we need to manage our *TODO list*. Add the following lines of code to *index.js*:
 
 ```javascript
+class Todos {
+    constructor() {
+        this.todos = [];
+    }
+}
 
+module.exports = Todos;
 ```
 
+We begin the file by creating a *Todos class*. Its *constructor()* function takes no arguments, therefore we don’t need to provide any values to instantiate an object for this class. All we do when we initialize a *Todos object* is create a *todos property* that’s an *empty array*.
 
+The modules line allows other Node.js modules to require our *Todos class*. Without explicitly exporting the class, the test file that we will create later would not be able to use it.
 
+Let’s add a function to return the *array of todos* we have stored. Write in the following highlighted lines:
+
+```javascript
+class Todos {
+    constructor() {
+        this.todos = [];
+    }
+
+    list() {
+        return [...this.todos];
+    }
+}
+
+module.exports = Todos;
+```
+
+Our *list()* function returns a copy of the *array* that’s used by the class. It makes a copy of the *array* by using *JavaScript’s destructuring syntax*. We make a copy of the *array* so that changes the user makes to the *array* returned by *list()* does not affect the *array* used by the Todos object.
+
+> Note: JavaScript *arrays* are reference types. This means that for any *variable assignment* to an *array or function invocation with an array* as a parameter, JavaScript refers to the *original array* that was created. For example, if we have an *array* with three items called *x*, and create a new *variable y* such that *y = x, y and x* both refer to the same thing. Any changes we make to the *array* with *y* impacts *variable x* and vice versa.
