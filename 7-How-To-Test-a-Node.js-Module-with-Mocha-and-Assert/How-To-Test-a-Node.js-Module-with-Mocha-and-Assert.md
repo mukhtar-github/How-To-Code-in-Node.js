@@ -289,9 +289,9 @@ describe("integration test", function() {
 });
 ```
 
-With this code block, we’ve created a grouping for our integrated tests. Unit tests would test one function at a time. Integration tests verify how well functions within or across modules work together. When Mocha runs our test, all the tests within that describe block will run under the "integration test" group.
+With this code block, we’ve created a grouping for our *integrated tests*. *Unit tests* would test one function at a time. *Integration tests* verify how well functions within or across *modules* work together. When *Mocha* runs our test, all the *tests* within that describe block will run under the *"integration test" group*.
 
-Let’s add an it() function so we can begin testing our module’s code:
+Let’s add an *it() function* so we can begin testing our *module’s* code:
 
 ```javascript
 ...
@@ -300,3 +300,29 @@ describe("integration test", function() {
     });
 });
 ```
+
+Notice how descriptive we made the *test’s name*. If anyone runs our test, it will be immediately clear what’s passing or failing. A *well-tested application* is typically a *well-documented application*, and *tests can sometimes be an effective kind of documentation*.
+
+For our first test, we will create a *new Todos object* and verify it has no items in it:
+
+```javascript
+...
+describe("integration test", function() {
+    it("should be able to add and complete TODOs", function() {
+        let todos = new Todos();
+        assert.notStrictEqual(todos.list().length, 1);
+    });
+});
+```
+
+The first new line of code instantiated a *new Todos object* as we would do in the *Node.js REPL or another module*. In the second new line, we use the *assert module*.
+
+From the *assert module* we use the *notStrictEqual()* method. This function takes *two parameters*: the value that we want to test *(called the actual value)* and the value we expect to get *(called the expected value)*. If both arguments are the same, *notStrictEqual() throws an error to fail the test*.
+
+Save and exit from *index.test.js*.
+
+The *base case will be true as the length should be 0, which isn’t 1*. Let’s confirm this by running *Mocha*. To do this, we need to modify our *package.json file*. Open your *package.json file* with your text editor:
+
+
+
+
