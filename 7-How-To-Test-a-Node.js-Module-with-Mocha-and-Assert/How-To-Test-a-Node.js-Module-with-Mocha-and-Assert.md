@@ -337,9 +337,9 @@ Now, in your *scripts* property, change it so it looks like this:
 ...
 ```
 
-We have just changed the behavior of npm’s CLI test command. When we run npm test, npm will review the command we just entered in package.json. It will look for the Mocha library in our node_modules folder and run the mocha command with our test file.
+We have just changed the behavior of *npm’s CLI test command*. When we run *npm test, npm* will review the command we just entered in *package.json*. It will look for the *Mocha library* in our *node_modules folder* and run the *mocha command with our test file*.
 
-Save and exit package.json.
+Save and exit *package.json*.
 
 Let’s see what happens when we run our test. In your terminal, enter:
 
@@ -392,10 +392,6 @@ npm test
 This will give the following:
 
 ```javascript
-npm test
-```
-
-```javascript
 // Output
 > todos@1.0.0 test /home/mukhtar/Documents/How-To-Code-in-Node.js/7-How-To-Test-a-Node.js-Module-with-Mocha-and-Assert/todos
 > mocha index.test.js
@@ -407,5 +403,65 @@ npm test
 
 
   1 passing (13ms)
+```
+
+This passes as expected, as the *length is greater than 1*. However, it defeats the original purpose of having that *first test*. The *first test* is meant to confirm that we start on a blank state. A better *test* will confirm that in all cases.
+
+Let’s change the *test* so it only passes if we have absolutely no *TODOs* in store. Make the following changes to *index.test.js*:
+
+```javascript
+...
+describe("integration test", function() {
+    it("should be able to add and complete TODOs", function() {
+        let todos = new Todos();
+        todos.add("get up from bed");
+        todos.add("make up bed");
+        assert.strictEqual(todos.list().length, 0);
+    });
+});
+```
+
+You changed *notStrictEqual() to strictEqual()*, a function that checks for equality between its *actual and expected argument*. *Strict equal* will fail if our *arguments* are not exactly the same.
+
+Save and exit, then run the test so we can see what happens:
+
+```javascript
+npm test
+```
+
+This time, the output will show an error:
+
+```javascript
+// Output
+> todos@1.0.0 test /home/mukhtar/Documents/How-To-Code-in-Node.js/7-How-To-Test-a-Node.js-Module-with-Mocha-and-Assert/todos
+> mocha index.test.js
+
+
+
+  integration test
+    1) should be able to add and complete TODOs
+
+
+  0 passing (26ms)
+  1 failing
+
+  1) integration test
+       should be able to add and complete TODOs:
+
+      AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+2 !== 0
+
+      + expected - actual
+
+      -2
+      +0
+      
+      at Context.<anonymous> (index.test.js:9:16)
+      at processImmediate (internal/timers.js:464:21)
+
+
+
+npm ERR! Test failed.  See above for more details.
 ```
 

@@ -6,6 +6,6 @@ describe("integration test", function() {
         let todos = new Todos();
         todos.add("get up from bed");
         todos.add("make up bed");
-        assert.notStrictEqual(todos.list().length, 1);
+        assert.strictEqual(todos.list().length, 0);
     });
 });
