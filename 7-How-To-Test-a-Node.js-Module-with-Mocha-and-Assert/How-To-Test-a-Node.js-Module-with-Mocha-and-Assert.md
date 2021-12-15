@@ -82,6 +82,77 @@ class Todos {
 module.exports = Todos;
 ```
 
-Our *list()* function returns a copy of the *array* that’s used by the class. It makes a copy of the *array* by using *JavaScript’s destructuring syntax*. We make a copy of the *array* so that changes the user makes to the *array* returned by *list()* does not affect the *array* used by the Todos object.
+Our *list()* function returns a copy of the *array* that’s used by the class. It makes a copy of the *array* by using *JavaScript’s destructuring syntax*. We make a copy of the *array* so that changes the user makes to the *array* returned by *list()* does not affect the *array* used by the *Todos* object.
 
 > Note: JavaScript *arrays* are reference types. This means that for any *variable assignment* to an *array or function invocation with an array* as a parameter, JavaScript refers to the *original array* that was created. For example, if we have an *array* with three items called *x*, and create a new *variable y* such that *y = x, y and x* both refer to the same thing. Any changes we make to the *array* with *y* impacts *variable x* and vice versa.
+
+Now let’s write the *add()* function, which adds a new *TODO* item:
+
+```javascript
+class Todos {
+    constructor() {
+        this.todos = [];
+    }
+
+    list() {
+        return [...this.todos];
+    }
+
+    add(title) {
+        let todo = {
+            title: title,
+            completed: false,
+        }
+
+        this.todos.push(todo);
+    }
+}
+
+module.exports = Todos;
+```
+
+Our *add()* function takes a string, and places it in a new JavaScript object’s *title* property. The new object also has a *completed* property, which is set to false by default. We then add this new object to our array of TODOs.
+
+Important functionality in a *TODO manager* is to mark items as *completed*. For this implementation, we will loop through our *todos* array to find the *TODO* item the user is searching for. If one is found, we’ll mark it as *completed*. If none is found, we’ll throw an *error*.
+
+Add the complete() function like this:
+
+```javascript
+class Todos {
+    constructor() {
+        this.todos = [];
+    }
+
+    list() {
+        return [...this.todos];
+    }
+
+    add(title) {
+        let todo = {
+            title: title,
+            completed: false,
+        }
+
+        this.todos.push(todo);
+    }
+
+    complete(title) {
+        let todoFound = false;
+        this.todos.forEach((todo) => {
+            if (todo.title === title) {
+                todo.completed = true;
+                todoFound = true;
+                return;
+            }
+        });
+
+        if (!todoFound) {
+            throw new Error(`No TODO was found with the title: "${title}"`);
+        }
+    }
+}
+
+module.exports = Todos;
+```
+
+
