@@ -323,6 +323,27 @@ Save and exit from *index.test.js*.
 
 The *base case will be true as the length should be 0, which isn’t 1*. Let’s confirm this by running *Mocha*. To do this, we need to modify our *package.json file*. Open your *package.json file* with your text editor:
 
+```javascript
+vim package.json
+```
 
+Now, in your *scripts* property, change it so it looks like this:
 
+```javascript
+...
+"scripts": {
+    "test": "mocha index.test.js"
+},
+...
+```
+
+We have just changed the behavior of npm’s CLI test command. When we run npm test, npm will review the command we just entered in package.json. It will look for the Mocha library in our node_modules folder and run the mocha command with our test file.
+
+Save and exit package.json.
+
+Let’s see what happens when we run our test. In your terminal, enter:
+
+```javascript
+npm test
+```
 
