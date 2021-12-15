@@ -230,3 +230,61 @@ The *REPL* will output:
 ]
 ```
 
+Now, exit the *REPL* with the following:
+
+```javascript
+> .exit
+```
+
+We’ve confirmed that our *module* behaves as we expect it to. While we didn’t put our code in a *test file* or use a *testing library*, we did *test our code manually*. Unfortunately, this form of *testing* becomes time consuming to do every time we make a change. Next, let’s use *automated testing* in *Node.js* and see if we can solve this problem with the *Mocha testing framework*.
+
+## Step 3 — Writing Your First Test with Mocha and Assert
+
+In the last step, we *manually tested our application*. This will work for individual use cases, but as our *module* scales, this method becomes less viable. As we *test* new features, we must be certain that the added functionality has not created problems in the old functionality. We would like to *test* each feature over again for every change in the code, but doing this by hand would take a lot of effort and would be *prone to error*.
+
+A more efficient practice would be to set up *automated tests*. These are *scripted tests* written like any other code block. We run our functions with *defined inputs and inspect their effects* to ensure they behave as we expect. As our codebase grows, so will our *automated tests*. When we write new tests alongside the features, we can verify the entire *module* still works—all without having to remember how to use each function every time.
+
+In this tutorial, we’re using the *Mocha testing framework* with the *Node.js assert module*. Let’s get some hands-on experience to see how they work together.
+
+To begin, create a new file to store our test code:
+
+```javascript
+touch index.test.js
+```
+
+Now use your preferred *text editor* to open the *test file*. You can use vim like before:
+
+```javascript
+vim index.test.js
+```
+
+In the first line of the *test file*, we will load the *TODOs module* like we did in the *Node.js shell*. We will then load the *assert module* for when we write our *tests*. Add the following lines:
+
+```javascript
+const Todos = require('./index');
+const assert = require('assert').strict;
+```
+
+The *strict* property of the *assert module* will allow us to use *special equality tests* that are recommended by *Node.js* and are good for *future-proofing*, since they account for more use cases.
+
+Before we go into *writing tests*, let’s discuss how *Mocha* organizes our code. Tests structured in *Mocha* usually follow this template:
+
+```javascript
+describe([String with Test Group Name], function() {
+    it([String with Test Name], function() {
+        [Test Code]
+    });
+});
+```
+
+Notice two key functions: *describe() and it()*. The *describe() function* is used to group similar tests. It’s not required for *Mocha* to run tests, but grouping tests make our test code easier to maintain. It’s recommended that you group your tests in a way that’s easy for you to update similar ones together.
+
+The *it()* contains our test code. This is where we would interact with our *module’s functions* and use the *assert library*. Many *it() functions* can be defined in a *describe() function*.
+
+Our goal in this section is to use *Mocha and assert* to automate our manual test. We’ll do this step-by-step, beginning with our *describe block*. Add the following to your file after the *module* lines:
+
+```javascript
+...
+describe("integration test", function() {
+});
+```
