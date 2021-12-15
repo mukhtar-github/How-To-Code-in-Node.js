@@ -478,3 +478,30 @@ Our *test summary* is no longer at the bottom of the *output*, but right after o
 
 The remaining *output* provides us with *data about our failing tests*. First, we see what *test case* has failed:
 
+```javascript
+...
+integration test
+    1) should be able to add and complete TODOs
+...
+```
+
+Then, we see why our *test* failed:
+
+```javascript
+...
+    AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+2 !== 0
+
+      + expected - actual
+
+      -2
+      +0
+      
+      at Context.<anonymous> (index.test.js:9:16)
+      at processImmediate (internal/timers.js:464:21)
+...
+```
+
+
+
