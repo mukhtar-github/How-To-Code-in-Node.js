@@ -175,19 +175,19 @@ You will see the *>* prompt in the *REPL* that tells us we can enter JavaScript 
 
 With *require()*, we load the *TODOs* module into a *Todos* variable. Recall that our module returns the *Todos* class by default.
 
-Now, let’s instantiate an object for that class. In the *REPL*, add this line of code:
+Now, let’s instantiate an *object* for that class. In the *REPL*, add this line of code:
 
 ```javascript
 > const todos = new Todos();
 ```
 
-We can use the *todos* object to verify our implementation works. Let’s add our first *TODO* item:
+We can use the *todos object* to verify our implementation works. Let’s add our first *TODO* item:
 
 ```javascript
 > todos.add("run code");
 ```
 
-So far we have not seen any output in our terminal. Let’s verify that we’ve stored our "run code" TODO item by getting a list of all our TODOs:
+So far we have not seen any output in our terminal. Let’s verify that we’ve stored our *"run code" TODO* item by getting a *list of all our TODOs*:
 
 ```javascript
 > todos.list();
