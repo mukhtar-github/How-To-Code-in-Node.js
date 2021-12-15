@@ -382,3 +382,30 @@ describe("integration test", function() {
     });
 });
 ```
+
+We added *two TODO items*. Let’s run the test to see what happens:
+
+```javascript
+npm test
+```
+
+This will give the following:
+
+```javascript
+npm test
+```
+
+```javascript
+// Output
+> todos@1.0.0 test /home/mukhtar/Documents/How-To-Code-in-Node.js/7-How-To-Test-a-Node.js-Module-with-Mocha-and-Assert/todos
+> mocha index.test.js
+
+
+
+  integration test
+    ✔ should be able to add and complete TODOs
+
+
+  1 passing (13ms)
+```
+
