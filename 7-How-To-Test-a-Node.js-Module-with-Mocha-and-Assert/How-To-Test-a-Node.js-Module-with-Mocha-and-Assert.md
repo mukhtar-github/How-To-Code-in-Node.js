@@ -503,5 +503,28 @@ Then, we see why our *test* failed:
 ...
 ```
 
+An *AssertionError* is thrown when *strictEqual()* fails. We see that the expected value, *0*, is different from the actual value, *2*.
 
+We then see the line in our *test file* where the code fails. In this case, it’s line *10*.
+
+Now, we’ve seen for ourselves that our *test* will fail if we expect incorrect values. Let’s change our *test case* back to its right value. First, open the file:
+
+```javascript
+vim index.test.js
+```
+
+Then take out the *todos.add* lines so that your code looks like the following:
+
+```javascript
+> todos@1.0.0 test /home/mukhtar/Documents/How-To-Code-in-Node.js/7-How-To-Test-a-Node.js-Module-with-Mocha-and-Assert/todos
+> mocha index.test.js
+
+
+
+  integration test
+    ✔ should be able to add and complete TODOs
+
+
+  1 passing (26ms)
+```
 
