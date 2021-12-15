@@ -429,7 +429,7 @@ Save and exit, then run the test so we can see what happens:
 npm test
 ```
 
-This time, the output will show an error:
+This time, the *output* will show an error:
 
 ```javascript
 // Output
@@ -464,4 +464,17 @@ This time, the output will show an error:
 
 npm ERR! Test failed.  See above for more details.
 ```
+
+This text will be useful for us to *debug why the test failed*. Notice that since the *test failed* there was no *tick* at the beginning of the *test case*.
+
+Our *test summary* is no longer at the bottom of the *output*, but right after our *list of test cases* were displayed:
+
+```javascript
+...
+0 passing (26ms)
+  1 failing
+...
+```
+
+The remaining *output* provides us with *data about our failing tests*. First, we see what *test case* has failed:
 
