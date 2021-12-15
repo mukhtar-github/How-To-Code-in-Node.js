@@ -115,7 +115,7 @@ Our *add()* function takes a string, and places it in a new JavaScript object’
 
 Important functionality in a *TODO manager* is to mark items as *completed*. For this implementation, we will loop through our *todos* array to find the *TODO* item the user is searching for. If one is found, we’ll mark it as *completed*. If none is found, we’ll throw an *error*.
 
-Add the complete() function like this:
+Add the *complete()* function like this:
 
 ```javascript
 class Todos {
@@ -153,6 +153,51 @@ class Todos {
 }
 
 module.exports = Todos;
+```
+
+We now have a basic *TODO* manager that we can experiment with. Next, let’s manually test our code to see if the application is working.
+
+## Step 2 — Manually Testing the Code
+
+In this step, we will run our code’s functions and observe the output to ensure it matches our expectations. This is called *manual testing*. It’s likely the most common testing methodology programmers apply. Although we will automate our testing later with *Mocha*, we will first manually test our code to give a better sense of how manual testing differs from testing frameworks.
+
+Let’s add two *TODO* items to our app and mark one as complete. Start the *Node.js REPL* in the same folder as the *index.js* file:
+
+```javascript
+node
+```
+
+You will see the *>* prompt in the *REPL* that tells us we can enter JavaScript code. Type the following at the prompt:
+
+```javascript
+> const Todos = require('./index');
+```
+
+With *require()*, we load the *TODOs* module into a *Todos* variable. Recall that our module returns the *Todos* class by default.
+
+Now, let’s instantiate an object for that class. In the *REPL*, add this line of code:
+
+```javascript
+> const todos = new Todos();
+```
+
+We can use the *todos* object to verify our implementation works. Let’s add our first *TODO* item:
+
+```javascript
+> todos.add("run code");
+```
+
+So far we have not seen any output in our terminal. Let’s verify that we’ve stored our "run code" TODO item by getting a list of all our TODOs:
+
+```javascript
+> todos.list();
+```
+
+You will see this output in your *REPL*:
+
+```javascript
+// Output
+[ { title: 'run code', completed: false } ]
 ```
 
 
