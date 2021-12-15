@@ -565,7 +565,7 @@ describe("integration test", function() {
 
 After using the *add()* function, we confirm that we now have one *TODO* being managed by our *todos object* with *strictEqual()*. Our next *test* confirms the data in the *todos* with *deepStrictEqual()*. The *deepStrictEqual()* function *recursively tests* that our *expected and actual objects* have the same properties. In this case, it *tests* that the *arrays* we expect both have a *JavaScript object* within them. It then checks that their *JavaScript objects* have the *same properties*, that is, that both their *title properties are "run code" and both their completed properties are false*.
 
-We then complete the remaining *tests* using these two equality checks as needed by adding the following highlighted lines:
+We then complete the remaining *tests* using these two equality checks as needed by adding the following lines:
 
 ```javascript
 ...
@@ -598,5 +598,19 @@ describe("integration test", function() {
 });
 ```
 
+Our *test* now mimics our manual *test*. With these programmatic *tests*, we don’t need to check the output continuously if our *tests* pass when we run them. You typically want to *test* every aspect of use to make sure the code is *tested* properly.
+
+Let’s run our *test* with *npm test* once more to get this familiar output:
+
+```javascript
+> todos@1.0.0 test /home/mukhtar/Documents/How-To-Code-in-Node.js/7-How-To-Test-a-Node.js-Module-with-Mocha-and-Assert/todos
+> mocha index.test.js
 
 
+
+  integration test
+    ✔ should be able to add and complete TODOs
+
+
+  1 passing (16ms)
+```
