@@ -347,9 +347,38 @@ Let’s see what happens when we run our test. In your terminal, enter:
 npm test
 ```
 
-The command will produce the following output:
+The command will produce the following *output*:
 
 ```javascript
-npm test
+// Output
+> todos@1.0.0 test /home/mukhtar/Documents/How-To-Code-in-Node.js/7-How-To-Test-a-Node.js-Module-with-Mocha-and-Assert/todos
+> mocha index.test.js
+
+
+
+  integration test
+    ✔ should be able to add and complete TODOs
+
+
+  1 passing (13ms)
 ```
 
+This *output* first shows us which group of *tests* it is about to run. For every individual *test* within a group, the *test* case is *indented*. We see our *test* name as we described it in the *it() function*. The *tick* at the left side of the *test case* indicates that the *test* passed.
+
+At the bottom, we get a summary of all our *tests*. In our case, our one *test* is passing and was completed in 16ms (the time varies from computer to computer).
+
+Our *testing* has started with success. However, this current *test case* can allow for *false-positives*. A *false-positive is a test case that passes when it should fail*.
+
+We currently check that the *length of the array is not equal to 1*. Let’s modify the *test* so that this condition holds true when it should not. Add the following lines to *index.test.js*:
+
+```javascript
+...
+describe("integration test", function() {
+    it("should be able to add and complete TODOs", function() {
+        let todos = new Todos();
+        todos.add("get up from bed");
+        todos.add("make up bed");
+        assert.notStrictEqual(todos.list().length, 1);
+    });
+});
+```
