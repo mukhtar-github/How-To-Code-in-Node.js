@@ -516,6 +516,25 @@ vim index.test.js
 Then take out the *todos.add* lines so that your code looks like the following:
 
 ```javascript
+...
+describe("integration test", function () {
+    it("should be able to add and complete TODOs", function () {
+        let todos = new Todos();
+        assert.strictEqual(todos.list().length, 0);
+    });
+});
+```
+
+Run it once more to confirm that it passes without any potential *false-positives*:
+
+```javascript
+npm test
+```
+
+The *output* will be as follows:
+
+```javascript
+// Output
 > todos@1.0.0 test /home/mukhtar/Documents/How-To-Code-in-Node.js/7-How-To-Test-a-Node.js-Module-with-Mocha-and-Assert/todos
 > mocha index.test.js
 
@@ -527,4 +546,57 @@ Then take out the *todos.add* lines so that your code looks like the following:
 
   1 passing (26ms)
 ```
+
+We’ve now improved our *test’s resiliency* quite a bit. Let’s move forward with our *integration test*. The next step is to add a new TODO item to index.test.js:
+
+```javascript
+...
+describe("integration test", function() {
+    it("should be able to add and complete TODOs", function() {
+        let todos = new Todos();
+        assert.strictEqual(todos.list().length, 0);
+
+        todos.add("run code");
+        assert.strictEqual(todos.list().length, 1);
+        assert.deepStrictEqual(todos.list(), [{title: "run code", completed: false}]);
+    });
+});
+```
+
+After using the *add()* function, we confirm that we now have one *TODO* being managed by our *todos object* with *strictEqual()*. Our next *test* confirms the data in the *todos* with *deepStrictEqual()*. The *deepStrictEqual()* function *recursively tests* that our *expected and actual objects* have the same properties. In this case, it *tests* that the *arrays* we expect both have a *JavaScript object* within them. It then checks that their *JavaScript objects* have the *same properties*, that is, that both their *title properties are "run code" and both their completed properties are false*.
+
+We then complete the remaining *tests* using these two equality checks as needed by adding the following highlighted lines:
+
+```javascript
+...
+describe("integration test", function() {
+    it("should be able to add and complete TODOs", function() {
+        let todos = new Todos();
+        assert.strictEqual(todos.list().length, 0);
+
+        todos.add("run code");
+        assert.strictEqual(todos.list().length, 1);
+        assert.deepStrictEqual(todos.list(), [{title: "run code", completed: false}]);
+
+        todos.add("test everything");
+        assert.strictEqual(todos.list().length, 2);
+        assert.deepStrictEqual(todos.list(),
+            [
+                { title: "run code", completed: false },
+                { title: "test everything", completed: false }
+            ]
+        );
+
+        todos.complete("run code");
+        assert.deepStrictEqual(todos.list(),
+            [
+                { title: "run code", completed: true },
+                { title: "test everything", completed: false }
+            ]
+    );
+  });
+});
+```
+
+
 
