@@ -614,3 +614,42 @@ Let’s run our *test* with *npm test* once more to get this familiar output:
 
   1 passing (16ms)
 ```
+
+You’ve now set up an *integrated test* with the *Mocha framework and the assert library*.
+
+Let’s consider a situation where we’ve shared our module with some other developers and they’re now giving us feedback. A good portion of our users would like the *complete()* function to return an *error* if no *TODOs* were added as of yet. Let’s add this functionality in our *complete()* function.
+
+Open *index.js* in your text editor:
+
+```javascript
+vim index.js
+```
+
+Add the following to the function:
+
+```javascript
+...
+complete(title) {
+    if (this.todos.length === 0) {
+        throw new Error("You have no TODOs stored. Why don't you add one first?");
+    }
+
+    let todoFound = false
+    this.todos.forEach((todo) => {
+        if (todo.title === title) {
+            todo.completed = true;
+            todoFound = true;
+            return;
+        }
+    });
+
+    if (!todoFound) {
+        throw new Error(`No TODO was found with the title: "${title}"`);
+    }
+}
+...
+```
+
+
+
+
