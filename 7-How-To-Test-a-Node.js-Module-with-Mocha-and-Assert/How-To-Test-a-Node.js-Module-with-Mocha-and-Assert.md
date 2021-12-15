@@ -200,4 +200,33 @@ You will see this output in your *REPL*:
 [ { title: 'run code', completed: false } ]
 ```
 
+This is the expected result: We have one *TODO* item in our *array of TODOs*, and it’s not completed by default.
+
+Let’s add another *TODO* item:
+
+```javascript
+> todos.add("test everything");
+```
+
+Mark the first *TODO item as completed*:
+
+```javascript
+> todos.complete("run code");
+```
+
+Our *todos object* will now be managing two items: *"run code" and "test everything"*. The *"run code" TODO* will be *completed* as well. Let’s confirm this by calling *list()* once again:
+
+```javascript
+> todos.list();
+```
+
+The *REPL* will output:
+
+```javascript
+// Output
+[
+  { title: 'run code', completed: true },
+  { title: 'test everything', completed: false }
+]
+```
 
