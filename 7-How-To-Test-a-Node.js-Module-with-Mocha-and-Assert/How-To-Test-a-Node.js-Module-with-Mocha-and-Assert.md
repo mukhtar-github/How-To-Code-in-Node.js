@@ -650,6 +650,39 @@ complete(title) {
 ...
 ```
 
+Now let’s add a new *test* for this new feature. We want to verify that if we call *complete* on a *Todos object* that has no items, it will return our *special error*.
+
+Go back into *index.test.js*:
+
+```javascript
+vim index.test.js
+```
+
+At the end of the file, add the following code:
+
+```javascript
+...
+describe("complete()", function() {
+    it("should fail if there are no TODOs", function() {
+        let todos = new Todos();
+        const expectedError = new Error("You have no TODOs stored. Why don't you add one first?");
+
+        assert.throws(() => {
+            todos.complete("doesn't exist");
+        }, expectedError);
+    });
+});
+```
+
+We use *describe()* and *it()* like before. Our *test* begins with creating a new *todos object*. We then define the *error* we are expecting to receive when we call the *complete()* function.
+
+Next, we use the *throws()* function of the *assert module*. This function was created so we can verify the *errors* that are thrown in our code. Its *first argument* is a function that contains the code that *throws the error*. The *second argument* is the *error* we are expecting to receive.
+
+In your terminal, run the *tests* with *npm test* once again and you will now see the following output:
+
+```javascript
+vim index.test.js
+```
 
 
 
