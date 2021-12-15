@@ -347,3 +347,9 @@ Let’s see what happens when we run our test. In your terminal, enter:
 npm test
 ```
 
+The command will produce the following output:
+
+```javascript
+npm test
+```
+
