@@ -288,3 +288,15 @@ Our goal in this section is to use *Mocha and assert* to automate our manual tes
 describe("integration test", function() {
 });
 ```
+
+With this code block, we’ve created a grouping for our integrated tests. Unit tests would test one function at a time. Integration tests verify how well functions within or across modules work together. When Mocha runs our test, all the tests within that describe block will run under the "integration test" group.
+
+Let’s add an it() function so we can begin testing our module’s code:
+
+```javascript
+...
+describe("integration test", function() {
+    it("should be able to add and complete TODOs", function() {
+    });
+});
+```
