@@ -697,5 +697,25 @@ In your terminal, run the *tests* with *npm test* once again and you will now se
   2 passing (45ms)
 ```
 
+This *output* highlights the benefit of why we do *automated testing with Mocha and assert*. Because our *tests are scripted*, every time we run *npm test*, we verify that all our *tests are passing*. We did not need to manually check if the other code is still working; we know that it is because the *test* we have still passed.
+
+So far, our *tests* have verified the *results of synchronous code*. Let’s see how we would need to adapt our newfound *testing habits to work with asynchronous code*.
+
+## Step 4 — Testing Asynchronous Code
+
+One of the features we want in our *TODO module* is a *CSV export* feature. This will print all the *TODOs* we have in store along with the *completed status* to a file. This requires that we use the *fs module—a built-in Node.js module* for working with the *file system*.
+
+*Writing to a file is an asynchronous operation*. There are many ways to *write to a file in Node.js*. We can use *callbacks, Promises, or the async/await keywords*. In this section, we’ll look at how we write *tests* for those different methods.
+
+### Callbacks
+
+A *callback function* is one used as an *argument to an asynchronous function*. It is called when the *asynchronous operation is completed*.
+
+Let’s add a function to our *Todos class called saveToFile()*. This function will build a string by looping through *all our TODO items and writing that string to a file*.
+
+Open your *index.js* file:
+
+
+
 
 
