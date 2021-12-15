@@ -681,7 +681,20 @@ Next, we use the *throws()* function of the *assert module*. This function was c
 In your terminal, run the *tests* with *npm test* once again and you will now see the following output:
 
 ```javascript
-vim index.test.js
+// Output
+> todos@1.0.0 test /home/mukhtar/Documents/How-To-Code-in-Node.js/7-How-To-Test-a-Node.js-Module-with-Mocha-and-Assert/todos
+> mocha index.test.js
+
+
+
+  integration test
+    ✔ should be able to add and complete TODOs
+
+  complete()
+    ✔ should fail if there are no TODOs
+
+
+  2 passing (45ms)
 ```
 
 
