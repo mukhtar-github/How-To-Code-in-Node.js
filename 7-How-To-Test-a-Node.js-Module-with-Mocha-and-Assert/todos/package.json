@@ -2,9 +2,9 @@
   "name": "todos",
   "version": "1.0.0",
   "description": "",
-  "main": "callback.js",
+  "main": "promise.js",
   "scripts": {
-    "test": "mocha callback.test.js"
+    "test": "mocha promise.test.js"
   },
   "keywords": [],
   "author": "",
