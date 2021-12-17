@@ -894,7 +894,7 @@ Let’s run this *test with npm test* like before. Your console will display thi
 
 You’ve now *tested* your first *asynchronous function* with *Mocha using callbacks*. But at the time of writing this tutorial, *Promises* are more prevalent than *callbacks* in new *Node.js code*, as explained in our *How To Write Asynchronous Code in Node.js article*. Next, let’s learn how we can test them with *Mocha* as well.
 
-## Promises
+### Promises
 
 A *Promise* is a *JavaScript object* that will eventually *return a value*. When a *Promise* is successful, it is *resolved*. When it encounters an *error*, it is *rejected*.
 
