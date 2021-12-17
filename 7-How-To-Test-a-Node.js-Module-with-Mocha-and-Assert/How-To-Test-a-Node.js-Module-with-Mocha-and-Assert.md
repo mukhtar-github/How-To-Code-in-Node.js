@@ -939,4 +939,21 @@ Let’s now adapt our *test* so that it works with *Promises*. Open up *promise.
 vim promise.test.js
 ```
 
+Change the saveToFile() test to this:
+
+```javascript
+...
+describe("saveToFile()", function() {
+    it("should save a single TODO", function() {
+        let todos = new Todos();
+        todos.add("save a CSV");
+        return todos.saveToFile().then(() => {
+            assert.strictEqual(fs.existsSync('todos.csv'), true);
+            let expectedFileContents = "Title,Completed\nsave a CSV,false\n";
+            let content = fs.readFileSync("todos.csv").toString();
+            assert.strictEqual(content, expectedFileContents);
+        });
+    });
+});
+```
 
