@@ -892,3 +892,23 @@ Let’s run this *test with npm test* like before. Your console will display thi
   3 passing (61ms)
 ```
 
+You’ve now *tested* your first *asynchronous function* with *Mocha using callbacks*. But at the time of writing this tutorial, *Promises* are more prevalent than *callbacks* in new *Node.js code*, as explained in our *How To Write Asynchronous Code in Node.js article*. Next, let’s learn how we can test them with *Mocha* as well.
+
+## Promises
+
+A *Promise* is a *JavaScript object* that will eventually *return a value*. When a *Promise* is successful, it is *resolved*. When it encounters an *error*, it is *rejected*.
+
+Let’s modify the *saveToFile()* function so that it uses *Promises* instead of *callbacks*. Open up *index.js*:
+
+```javascript
+vim index.js
+```
+
+First, we need to change how the *fs module* is loaded. In your *index.js* file, change the *require()* statement at the top of the file to look like this:
+
+```javascript
+...
+const fs = require('fs').promises;
+...
+```
+
