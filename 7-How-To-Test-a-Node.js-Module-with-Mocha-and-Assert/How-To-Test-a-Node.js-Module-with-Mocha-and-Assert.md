@@ -829,4 +829,36 @@ assert.strictEqual(fs.existsSync('todos.csv'), true);
 ...
 ```
 
-The *fs.existsSync() function* returns true if the file path in its *argument* exists, false otherwise.
+The *fs.existsSync() function* returns *true* if the file path in its *argument* exists, *false* otherwise.
+
+> Note: The *fs module’s* functions are *asynchronous* by default. However, for key functions, they made *synchronous* counterparts. This *test* is simpler by using *synchronous functions*, as we don’t have to nest the *asynchronous code* to ensure it works. In the *fs module, synchronous functions* usually end with *"Sync"* at the end of their names.
+
+We then create a *variable* to store our expected value:
+
+```javascript
+...
+let expectedFileContents = "Title,Completed\nsave a CSV,false\n";
+...
+```
+
+We use *readFileSync()* of the *fs module* to read the file *synchronously*:
+
+```javascript
+...
+let content = fs.readFileSync("todos.csv").toString();
+...
+```
+
+We now provide *readFileSync()* with the right path for the file: *todos.csv*. As *readFileSync()* returns a *Buffer object*, which stores *binary data*, we use its *toString()* method so we can compare its value with the string we expect to have saved.
+
+Like before, we use the *assert module’s strictEqual* to do a comparison:
+
+```javascript
+...
+assert.strictEqual(content, expectedFileContents);
+...
+```
+
+
+
+
