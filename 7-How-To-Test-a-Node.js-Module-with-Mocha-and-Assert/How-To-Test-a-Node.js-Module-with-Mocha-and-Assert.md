@@ -898,10 +898,10 @@ You’ve now *tested* your first *asynchronous function* with *Mocha using callb
 
 A *Promise* is a *JavaScript object* that will eventually *return a value*. When a *Promise* is successful, it is *resolved*. When it encounters an *error*, it is *rejected*.
 
-Let’s modify the *saveToFile()* function so that it uses *Promises* instead of *callbacks*. Open up *callback.js*:
+Let’s modify the *saveToFile()* function so that it uses *Promises* instead of *callbacks*. Open up *promise.js*:
 
 ```javascript
-vim callback.js
+vim promise.js
 ```
 
 First, we need to change how the *fs module* is loaded. In your *callback.js* file, change the *require()* statement at the top of the file to look like this:
@@ -911,4 +911,24 @@ First, we need to change how the *fs module* is loaded. In your *callback.js* fi
 const fs = require('fs').promises;
 ...
 ```
+
+We just imported the *fs module* that uses *Promises* instead of *callbacks*. Now, we need to make some changes to *saveToFile()* so that it works with *Promises* instead.
+
+In your text editor, make the following changes to the *saveToFile()* function to remove the *callbacks*:
+
+```javascript
+...
+saveToFile() {
+    let fileContents = 'Title,Completed\n';
+    this.todos.forEach((todo) => {
+        fileContents += `${todo.title},${todo.completed}\n`
+    });
+
+    return fs.writeFile('todos.csv', fileContents);
+}
+...
+```
+
+
+
 
