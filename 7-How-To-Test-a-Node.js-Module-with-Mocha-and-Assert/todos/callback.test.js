@@ -1,4 +1,4 @@
-const Todos = require('./callback');
+const Todos = require('./index');
 const assert = require('assert').strict;
 const fs = require('fs');
 
