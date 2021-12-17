@@ -859,6 +859,36 @@ assert.strictEqual(content, expectedFileContents);
 ...
 ```
 
+We end our *test* by calling the *done() callback*, ensuring that *Mocha* knows to stop testing that case:
+
+```javascript
+...
+done(err);
+...
+```
+
+We provide the *err object to done() so Mocha can fail the test in the case an error occurred*.
+
+Save and exit from *index.test.js*.
+
+Let’s run this *test with npm test* like before. Your console will display this output:
+
+```javascript
+// Output
+> mocha index.test.js
 
 
+
+  integration test
+    ✔ should be able to add and complete TODOs
+
+  complete()
+    ✔ should fail if there are no TODOs
+
+  saveToFile()
+    ✔ should save a single TODO
+
+
+  3 passing (61ms)
+```
 
