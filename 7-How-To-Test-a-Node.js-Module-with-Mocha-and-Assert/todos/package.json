@@ -2,9 +2,9 @@
   "name": "todos",
   "version": "1.0.0",
   "description": "",
-  "main": "promise.js",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha promise.test.js"
+    "test": "mocha index.test.js"
   },
   "keywords": [],
   "author": "",

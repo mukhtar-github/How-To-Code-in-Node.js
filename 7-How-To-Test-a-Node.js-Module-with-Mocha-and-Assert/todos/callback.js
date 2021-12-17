@@ -1,4 +1,4 @@
-const fs = require('fs');
+// const fs = require('fs');
 
 class Todos {
     constructor() {
@@ -46,4 +46,4 @@ class Todos {
     }
 }
 
-module.exports = Todos;
+// module.exports = Todos;

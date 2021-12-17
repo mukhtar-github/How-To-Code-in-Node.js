@@ -41,16 +41,16 @@ We install *Mocha* as a *dev* dependency, as it’s not required by the *module*
 Finally, let’s create our file that will contain our *module’s* code:
 
 ```javascript
-touch callback.js
+touch index.js
 ```
 
-With that, we’re ready to create our *module*. Open *callback.js* in a text editor like vim:
+With that, we’re ready to create our *module*. Open *index.js* in a text editor like vim:
 
 ```javascript
-vim callback.js
+vim index.js
 ```
 
-Let’s begin by defining the *Todos class*. This class contains all the functions that we need to manage our *TODO list*. Add the following lines of code to *callback.js*:
+Let’s begin by defining the *Todos class*. This class contains all the functions that we need to manage our *TODO list*. Add the following lines of code to *index.js*:
 
 ```javascript
 class Todos {
@@ -161,7 +161,7 @@ We now have a basic *TODO* manager that we can experiment with. Next, let’s ma
 
 In this step, we will run our code’s functions and observe the output to ensure it matches our expectations. This is called *manual testing*. It’s likely the most common testing methodology programmers apply. Although we will automate our testing later with *Mocha*, we will first manually test our code to give a better sense of how manual testing differs from testing frameworks.
 
-Let’s add two *TODO* items to our app and mark one as complete. Start the *Node.js REPL* in the same folder as the *callback.js* file:
+Let’s add two *TODO* items to our app and mark one as complete. Start the *Node.js REPL* in the same folder as the *index.js* file:
 
 ```javascript
 node
@@ -170,7 +170,7 @@ node
 You will see the *>* prompt in the *REPL* that tells us we can enter JavaScript code. Type the following at the prompt:
 
 ```javascript
-> const Todos = require('./callback');
+> const Todos = require('./index');
 ```
 
 With *require()*, we load the *TODOs* module into a *Todos* variable. Recall that our module returns the *Todos* class by default.
@@ -249,19 +249,19 @@ In this tutorial, we’re using the *Mocha testing framework* with the *Node.js 
 To begin, create a new file to store our test code:
 
 ```javascript
-touch callback.test.js
+touch index.test.js
 ```
 
 Now use your preferred *text editor* to open the *test file*. You can use vim like before:
 
 ```javascript
-vim callback.test.js
+vim index.test.js
 ```
 
 In the first line of the *test file*, we will load the *TODOs module* like we did in the *Node.js shell*. We will then load the *assert module* for when we write our *tests*. Add the following lines:
 
 ```javascript
-const Todos = require('./callback');
+const Todos = require('./index');
 const assert = require('assert').strict;
 ```
 
@@ -319,7 +319,7 @@ The first new line of code instantiated a *new Todos object* as we would do in t
 
 From the *assert module* we use the *notStrictEqual()* method. This function takes *two parameters*: the value that we want to test *(called the actual value)* and the value we expect to get *(called the expected value)*. If both arguments are the same, *notStrictEqual() throws an error to fail the test*.
 
-Save and exit from *callback.test.js*.
+Save and exit from *index.test.js*.
 
 The *base case will be true as the length should be 0, which isn’t 1*. Let’s confirm this by running *Mocha*. To do this, we need to modify our *package.json file*. Open your *package.json file* with your text editor:
 
@@ -332,7 +332,7 @@ Now, in your *scripts* property, change it so it looks like this:
 ```javascript
 ...
 "scripts": {
-    "test": "mocha callback.test.js"
+    "test": "mocha index.test.js"
 },
 ...
 ```
@@ -352,7 +352,7 @@ The command will produce the following *output*:
 ```javascript
 // Output
 > todos@1.0.0 test /home/mukhtar/Documents/How-To-Code-in-Node.js/7-How-To-Test-a-Node.js-Module-with-Mocha-and-Assert/todos
-> mocha callback.test.js
+> mocha index.test.js
 
 
 
@@ -369,7 +369,7 @@ At the bottom, we get a summary of all our *tests*. In our case, our one *test* 
 
 Our *testing* has started with success. However, this current *test case* can allow for *false-positives*. A *false-positive is a test case that passes when it should fail*.
 
-We currently check that the *length of the array is not equal to 1*. Let’s modify the *test* so that this condition holds true when it should not. Add the following lines to *callback.test.js*:
+We currently check that the *length of the array is not equal to 1*. Let’s modify the *test* so that this condition holds true when it should not. Add the following lines to *index.test.js*:
 
 ```javascript
 ...
@@ -394,7 +394,7 @@ This will give the following:
 ```javascript
 // Output
 > todos@1.0.0 test /home/mukhtar/Documents/How-To-Code-in-Node.js/7-How-To-Test-a-Node.js-Module-with-Mocha-and-Assert/todos
-> mocha callback.test.js
+> mocha index.test.js
 
 
 
@@ -407,7 +407,7 @@ This will give the following:
 
 This passes as expected, as the *length is greater than 1*. However, it defeats the original purpose of having that *first test*. The *first test* is meant to confirm that we start on a blank state. A better *test* will confirm that in all cases.
 
-Let’s change the *test* so it only passes if we have absolutely no *TODOs* in store. Make the following changes to *callback.test.js*:
+Let’s change the *test* so it only passes if we have absolutely no *TODOs* in store. Make the following changes to *index.test.js*:
 
 ```javascript
 ...
@@ -434,7 +434,7 @@ This time, the *output* will show an error:
 ```javascript
 // Output
 > todos@1.0.0 test /home/mukhtar/Documents/How-To-Code-in-Node.js/7-How-To-Test-a-Node.js-Module-with-Mocha-and-Assert/todos
-> mocha callback.test.js
+> mocha index.test.js
 
 
 
@@ -457,7 +457,7 @@ This time, the *output* will show an error:
       -2
       +0
       
-      at Context.<anonymous> (callback.test.js:9:16)
+      at Context.<anonymous> (index.test.js:9:16)
       at processImmediate (internal/timers.js:464:21)
 
 
@@ -498,7 +498,7 @@ Then, we see why our *test* failed:
       -2
       +0
       
-      at Context.<anonymous> (callback.test.js:9:16)
+      at Context.<anonymous> (index.test.js:9:16)
       at processImmediate (internal/timers.js:464:21)
 ...
 ```
@@ -510,7 +510,7 @@ We then see the line in our *test file* where the code fails. In this case, it�
 Now, we’ve seen for ourselves that our *test* will fail if we expect incorrect values. Let’s change our *test case* back to its right value. First, open the file:
 
 ```javascript
-vim callback.test.js
+vim index.test.js
 ```
 
 Then take out the *todos.add* lines so that your code looks like the following:
@@ -536,7 +536,7 @@ The *output* will be as follows:
 ```javascript
 // Output
 > todos@1.0.0 test /home/mukhtar/Documents/How-To-Code-in-Node.js/7-How-To-Test-a-Node.js-Module-with-Mocha-and-Assert/todos
-> mocha callback.test.js
+> mocha index.test.js
 
 
 
@@ -547,7 +547,7 @@ The *output* will be as follows:
   1 passing (26ms)
 ```
 
-We’ve now improved our *test’s resiliency* quite a bit. Let’s move forward with our *integration test*. The next step is to add a new TODO item to callback.test.js:
+We’ve now improved our *test’s resiliency* quite a bit. Let’s move forward with our *integration test*. The next step is to add a new TODO item to index.test.js:
 
 ```javascript
 ...
@@ -604,7 +604,7 @@ Let’s run our *test* with *npm test* once more to get this familiar output:
 
 ```javascript
 > todos@1.0.0 test /home/mukhtar/Documents/How-To-Code-in-Node.js/7-How-To-Test-a-Node.js-Module-with-Mocha-and-Assert/todos
-> mocha callback.test.js
+> mocha index.test.js
 
 
 
@@ -619,10 +619,10 @@ You’ve now set up an *integrated test* with the *Mocha framework and the asser
 
 Let’s consider a situation where we’ve shared our module with some other developers and they’re now giving us feedback. A good portion of our users would like the *complete()* function to return an *error* if no *TODOs* were added as of yet. Let’s add this functionality in our *complete()* function.
 
-Open *callback.js* in your text editor:
+Open *index.js* in your text editor:
 
 ```javascript
-vim callback.js
+vim index.js
 ```
 
 Add the following to the function:
@@ -652,10 +652,10 @@ complete(title) {
 
 Now let’s add a new *test* for this new feature. We want to verify that if we call *complete* on a *Todos object* that has no items, it will return our *special error*.
 
-Go back into *callback.test.js*:
+Go back into *index.test.js*:
 
 ```javascript
-vim callback.test.js
+vim index.test.js
 ```
 
 At the end of the file, add the following code:
@@ -683,7 +683,7 @@ In your terminal, run the *tests* with *npm test* once again and you will now se
 ```javascript
 // Output
 > todos@1.0.0 test /home/mukhtar/Documents/How-To-Code-in-Node.js/7-How-To-Test-a-Node.js-Module-with-Mocha-and-Assert/todos
-> mocha callback.test.js
+> mocha index.test.js
 
 
 
@@ -713,10 +713,10 @@ A *callback function* is one used as an *argument to an asynchronous function*. 
 
 Let’s add a function to our *Todos class called saveToFile()*. This function will build a string by looping through *all our TODO items and writing that string to a file*.
 
-Open your *callback.js* file:
+Open your *index.js* file:
 
 ```javascript
-vim callback.js
+vim index.js
 ```
 
 In this file, add the following additional code:
@@ -781,16 +781,16 @@ Save and exit the file.
 
 Let’s now write a *test* for our *saveToFile() function*. Our *test* will do two things: confirm that the file exists in the first place, and then verify that it has the right contents.
 
-Open the callback.test.js file:
+Open the index.test.js file:
 
 ```javascript
-vim callback.test.js
+vim index.test.js
 ```
 
 let’s begin by loading the *fs module* at the top of the file, as we’ll use it to help *test* our results:
 
 ```javascript
-const Todos = require('./callback');
+const Todos = require('./index');
 const assert = require('assert').strict;
 const fs = require('fs');
 ...
@@ -869,13 +869,13 @@ done(err);
 
 We provide the *err object to done() so Mocha can fail the test in the case an error occurred*.
 
-Save and exit from *callback.test.js*.
+Save and exit from *index.test.js*.
 
 Let’s run this *test with npm test* like before. Your console will display this output:
 
 ```javascript
 // Output
-> mocha callback.test.js
+> mocha index.test.js
 
 
 
@@ -898,10 +898,10 @@ You’ve now *tested* your first *asynchronous function* with *Mocha using callb
 
 A *Promise* is a *JavaScript object* that will eventually *return a value*. When a *Promise* is successful, it is *resolved*. When it encounters an *error*, it is *rejected*.
 
-Let’s modify the *saveToFile()* function so that it uses *Promises* instead of *callbacks*. Open up *promise.js*:
+Let’s modify the *saveToFile()* function so that it uses *Promises* instead of *callbacks*. Open up *index.js*:
 
 ```javascript
-vim promise.js
+vim index.js
 ```
 
 First, we need to change how the *fs module* is loaded. In your *callback.js* file, change the *require()* statement at the top of the file to look like this:
@@ -931,12 +931,12 @@ saveToFile() {
 
 The first difference is that our function no longer accepts any *arguments*. With *Promises* we don’t need a *callback function*. The second change concerns how the *file is written*. We now return the result of the *writeFile() promise*.
 
-Save and close out of promise.js.
+Save and close out of index.js.
 
-Let’s now adapt our *test* so that it works with *Promises*. Open up *promise.test.js*:
+Let’s now adapt our *test* so that it works with *promises*. Open up *index.test.js*:
 
 ```javascript
-vim promise.test.js
+vim index.test.js
 ```
 
 Change the saveToFile() test to this:
@@ -968,8 +968,23 @@ The first change we need to make is to remove the *done() callback* from its *ar
       at processTimers (internal/timers.js:480:7)
 ```
 
+When testing *Promises*, do not include the *done() callback* in *it()*.
 
+To *test* our *promise*, we need to put our *assertion code* in the *then() function*. Notice that we *return* this *promise* in the *test*, and we don’t have a *catch() function* to catch when the *Promise is rejected*.
 
+We *return* the *promise* so that any *errors* that are thrown in the *then() function* are bubbled up to the *it() function*. If the *errors* are not bubbled up, *Mocha will not fail the test case*. When *testing Promises*, you need to use *return on the Promise* being *tested*. If not, you run the risk of getting a *false-positive*.
 
+We also omit the *catch()* clause because *Mocha* can detect when a *promise is rejected*. If *rejected*, it automatically *fails the test*.
+
+Now that we have our *test* in place, save and exit the file, then run *Mocha* with *npm test* and to confirm we get a successful result:
+
+```javascript
+// Example
+1) saveToFile()
+       should save a single TODO:
+     Error: Timeout of 2000ms exceeded. For async tests and hooks, ensure "done()" is called; if returning a Promise, ensure it resolves. (/home/ubuntu/todos/index.test.js)
+      at listOnTimeout (internal/timers.js:536:17)
+      at processTimers (internal/timers.js:480:7)
+```
 
 
