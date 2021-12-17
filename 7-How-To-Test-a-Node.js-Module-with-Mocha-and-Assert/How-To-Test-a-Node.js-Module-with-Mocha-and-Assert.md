@@ -929,6 +929,14 @@ saveToFile() {
 ...
 ```
 
+The first difference is that our function no longer accepts any *arguments*. With *Promises* we don’t need a *callback function*. The second change concerns how the *file is written*. We now return the result of the *writeFile() promise*.
 
+Save and close out of promise.js.
+
+Let’s now adapt our *test* so that it works with *Promises*. Open up *promise.test.js*:
+
+```javascript
+vim promise.test.js
+```
 
 
