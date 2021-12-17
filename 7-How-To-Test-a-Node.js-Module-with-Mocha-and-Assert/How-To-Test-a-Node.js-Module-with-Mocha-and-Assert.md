@@ -796,6 +796,37 @@ const fs = require('fs');
 ...
 ```
 
+Now, at the end of the file let’s add our new test case:
 
+```javascript
+...
+describe("saveToFile()", function() {
+    it("should save a single TODO", function(done) {
+        let todos = new Todos();
+        todos.add("save a CSV");
+        todos.saveToFile((err) => {
+            assert.strictEqual(fs.existsSync('todos.csv'), true);
+            let expectedFileContents = "Title,Completed\nsave a CSV,false\n";
+            let content = fs.readFileSync("todos.csv").toString();
+            assert.strictEqual(content, expectedFileContents);
+            done(err);
+        });
+    });
+});
+```
 
+Like before, we use *describe()* to group our *test* separately from the others as *it involves new functionality*. The *it() function* is slightly different from our other ones. Usually, the *callback function* we use has no *arguments*. This time, we have *done* as an *argument*. We need this *argument* when testing functions with *callbacks*. The *done() callback function* is used by *Mocha* to tell it when an *asynchronous function* is completed.
 
+All *callback functions* being *tested in Mocha must call the done() callback*. If not, *Mocha would never know when the function was complete and would be stuck waiting for a signal*.
+
+Continuing, we create our *Todos instance* and add a single item to it. We then call the *saveToFile() function*, with a *callback* that captures a *file writing error*. Note how our *test* for this function resides in the *callback*. If our *test code was outside the callback, it would fail as long as the code was called before the file writing completed*.
+
+In our *callback function*, we first check that our file exists:
+
+```javascript
+...
+assert.strictEqual(fs.existsSync('todos.csv'), true);
+...
+```
+
+The *fs.existsSync() function* returns true if the file path in its *argument* exists, false otherwise.
