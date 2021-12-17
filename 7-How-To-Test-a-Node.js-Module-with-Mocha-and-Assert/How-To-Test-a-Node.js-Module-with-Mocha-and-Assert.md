@@ -773,4 +773,29 @@ class Todos {
 module.exports = Todos;
 ```
 
+We first have to *import the fs module in our file*. Then we added our new *saveToFile() function*. Our function takes a *callback function* that will be used once the *file write operation is complete*. In that function, we create a *fileContents variable* that stores the *entire string* we want to be saved as a file. It’s initialized with the CSV’s headers. We then loop through each *TODO item* with the internal array’s *forEach()* method. As we iterate, we add the *title and completed properties of the individual todos objects*.
+
+Finally, we use the *fs module* to write the file with the *writeFile()* function. Our first *argument* is the file name: *todos.csv*. The second is the *contents of the file*, in this case, our *fileContents* variable. Our last *argument* is our *callback function*, which handles any *file writing errors*.
+
+Save and exit the file.
+
+Let’s now write a *test* for our *saveToFile() function*. Our *test* will do two things: confirm that the file exists in the first place, and then verify that it has the right contents.
+
+Open the index.test.js file:
+
+```javascript
+vim index.test.js
+```
+
+let’s begin by loading the *fs module* at the top of the file, as we’ll use it to help *test* our results:
+
+```javascript
+const Todos = require('./index');
+const assert = require('assert').strict;
+const fs = require('fs');
+...
+```
+
+
+
 
