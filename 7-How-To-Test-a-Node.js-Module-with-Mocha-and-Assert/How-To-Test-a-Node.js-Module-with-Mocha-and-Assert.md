@@ -987,4 +987,9 @@ Now that we have our *test* in place, save and exit the file, then run *Mocha* w
       at processTimers (internal/timers.js:480:7)
 ```
 
+![pasted image 0](https://lh3.googleusercontent.com/lQ6Dkhz0wSzsZIp71hFAOizKP_fCXCXKP396m5oc1gJeg1wysZiJEoFetBvFWDHLu8zpA6-soeTeBX_HLiznZjplU_eaj4r6vOpUFFj6R2hRZOuP6ptZMP06w6sx8hP-fPGTCObj)
+
+![Screenshot-2019-08-30-at-6.30.27-PM-1](https://blog.fleetx.io/content/images/2019/08/Screenshot-2019-08-30-at-6.30.27-PM-1.png)
+
+![pasted image 0](https://lh3.googleusercontent.com/vPmfawMqcbJ0Q77MgFukPEEQIQy-giGdu5BcUdZoh4EF98O7gvltRj1qAgqpH7u0eQ27fCpgzL2nFQvQvh8u_6O2u_9fMUJvCnPCK5htCkB52FadZRQ1vYhHXV0eI--iNbiJPLwL)
 
