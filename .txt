@@ -430,6 +430,7 @@ sudo rm -r /etc/nginx/sites-available/.mymtg.live.swp
 curl -4 127.0.1.1
 ** How do I find my port number in Ubuntu? -- sudo lsof -i -P -n | grep LISTEN
 node\x20/  1271   mtg   20u  IPv4  28689   0t0  TCP 127.0.0.1:3000 (LISTEN)
+node\x20/  1271   mtg   20u  IPv4  28689   :0t0  TCP 127.0.0.1:3000 (LISTEN)
 
 You can add additional (location) blocks to the same server block to provide access to other applications on the same
 server. For example, if you were also running another Node.js application on port (127.0.0.1), you could add this
@@ -468,3 +469,41 @@ ssh-copy-id mtg@46.101.63.136
 Run (ssh-add) on the client machine, that will add the (SSH key) to the agent.
 Confirm with (ssh-add -l) again on the client that it was indeed added.
 ssh mtg@46.101.63.136
+//permit user auth
+chmod 644 ~/.ssh/authorized_keys
+//Disable root login
+sudo vim /etc/ssh/sshd_config
+
+**Configuring ignored files for a single repository**
+Open Terminal.
+Navigate to the location of your Git repository.
+Create a .gitignore file for your repository.
+$ touch .gitignore
+If you want to ignore a file that is already checked in,
+you must untrack the file before you add a rule to ignore it. From your terminal,
+untrack the file.
+$ git rm --cached FILENAME
+**Configuring ignored files for all repositories on your computer**
+Open Terminal.
+Configure Git to use the exclude file ~/.gitignore_global
+**How do I delete files after Gitignore update?
+1 Update your . gitignore file – for instance, add a folder you don't want to track to . gitignore .
+2 git rm -r --cached . – Remove all tracked files, including wanted and unwanted.
+Your code will be safe as long as you have saved locally.
+3 git add . – All files will be added back in, except those in . gitignore .
+**Ignoring a previously committed file**
+$ echo debug.log >> .gitignore
+  
+$ git rm --cached debug.log
+rm 'debug.log'
+
+**To Update changes/files**
+$ git rm -r --cached FILENAME
+$ touch .gitignore
+$ git add .
+$ git commit -m "Update changes"
+$ git pull
+$ git push
+
+**To copy from a file to another**
+cp (1st-filename) (2nd-filename)
