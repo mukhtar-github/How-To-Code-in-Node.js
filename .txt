@@ -505,5 +505,12 @@ $ git commit -m "Update changes"
 $ git pull
 $ git push
 
+**Git Merge Master into Branch**
+$ git checkout main
+$ git pull
+$ git checkout validator
+$ git merge main
+$ git push
+
 **To copy from a file to another**
 cp (1st-filename) (2nd-filename)
