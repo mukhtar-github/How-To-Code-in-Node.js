@@ -512,5 +512,23 @@ $ git checkout validator
 $ git merge main
 $ git push
 
+**Initially wanted to put project in production**
+pm2 start index.js
+sudo pm2 save
+To force saving use: pm2 save --force
+pm2 startup systemd
+pm2 stop index
+
 **To copy from a file to another**
 cp (1st-filename) (2nd-filename)
+
+**How to launch default web browser from the terminal**
+xdg-open <URL>
+sudo apt install xdg-utils
+sudo apt remove xdg-utils
+
+**Testing my server/api**
+Start nodemon server
+Open another terminal and run:
+curl -v <http://localhost:7000/api/v1/vehicles> | json
+-To save to file: curl -o out.json <https://localhost:000/api/v1/vehicles/index.html>
