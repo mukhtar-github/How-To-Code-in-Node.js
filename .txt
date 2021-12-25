@@ -526,9 +526,13 @@ cp (1st-filename) (2nd-filename)
 xdg-open <URL>
 sudo apt install xdg-utils
 sudo apt remove xdg-utils
+-Background running server: sudo ps aux | grep -i nodemon
+sudo kill -9 process_id
+kill -9 $(lsof -t -i:2000)
 
 **Testing my server/api**
 Start nodemon server
 Open another terminal and run:
 curl -v <http://localhost:7000/api/v1/vehicles> | json
 -To save to file: curl -o out.json <https://localhost:000/api/v1/vehicles/index.html>
+curl -v http://localhost:5000/api/v1/vehicles?vehicle_id=23-FGN-730 | json
