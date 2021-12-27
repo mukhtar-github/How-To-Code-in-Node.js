@@ -465,10 +465,11 @@ sudo vim $HOME/.ssh/authorized_keys
 sudo vim /etc/hosts
 ssh-copy-id root@46.101.63.136
 ssh-copy-id mtg@46.101.63.136
-//Loging
+
+**Loging into my digital ocean vm**
 Run (ssh-add) on the client machine, that will add the (SSH key) to the agent.
 Confirm with (ssh-add -l) again on the client that it was indeed added.
-ssh mtg@46.101.63.136
+**ssh mtg@46.101.63.136
 //permit user auth
 chmod 644 ~/.ssh/authorized_keys
 //Disable root login
