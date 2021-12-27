@@ -536,3 +536,6 @@ Open another terminal and run:
 curl -v <http://localhost:7000/api/v1/vehicles> | json
 -To save to file: curl -o out.json <https://localhost:000/api/v1/vehicles/index.html>
 curl -v <http://localhost:5000/api/v1/vehicles?vehicle_id=23-FGN-730> | json
+
+**Project Folder Route**
+vimapp-project/backend/api & dao
